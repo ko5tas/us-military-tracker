@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update:
@@ -69,3 +71,17 @@ jobs:
           git add data/ output/ config/
           git diff --cached --quiet || git commit -m "chore: update tracker data [$(date -u +%Y-%m-%dT%H:%M:%SZ)]"
           git push
+
+      - name: Prepare Pages content
+        run: |
+          mkdir -p _site
+          cp -r output/* _site/ 2>/dev/null || true
+          cp network-link.kml _site/ 2>/dev/null || true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
