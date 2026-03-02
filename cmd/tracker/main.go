@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"flag"
@@ -182,41 +183,57 @@ func run() error {
 	var members []providers.Completer
 
 	if geminiKey != "" {
-		g, err := providers.NewGemini(ctx, geminiKey, "gemini", "gemini-2.0-flash")
+		g, err := providers.NewGemini(ctx, geminiKey, "gemini", "gemini-2.0-flash-lite")
 		if err != nil {
 			log.Printf("WARNING: failed to init Gemini provider: %v", err)
 		} else {
 			members = append(members, g)
+			log.Println("Initialized provider: gemini")
 		}
 	}
 	if groqKey != "" {
 		members = append(members, providers.NewGroq(groqKey))
+		log.Println("Initialized provider: groq")
 	}
 	if mistralKey != "" {
 		members = append(members, providers.NewMistral(mistralKey))
+		log.Println("Initialized provider: mistral")
 	}
 	if deepseekKey != "" {
 		members = append(members, providers.NewDeepSeek(deepseekKey))
+		log.Println("Initialized provider: deepseek")
 	}
 	if openrouterKey != "" {
 		members = append(members, providers.NewOpenRouter(openrouterKey))
+		log.Println("Initialized provider: openrouter")
 	}
+
+	// Add local Ollama as a council member (always available on the runner)
+	ollamaHost := os.Getenv("OLLAMA_HOST")
+	if ollamaHost != "" {
+		members = append(members, providers.NewOllama())
+		log.Println("Initialized provider: ollama (local)")
+	}
+
+	log.Printf("Total AI providers available: %d", len(members))
 
 	chairman := "none"
 	score := 0.0
 
 	if len(members) > 0 {
-		// Build prompt from collected data
-		dataJSON, err := json.Marshal(data)
-		if err != nil {
-			return fmt.Errorf("marshal collected data for enrichment: %w", err)
-		}
-
-		systemPrompt := "You are a military intelligence analyst. Analyze the following tracking data and provide insights about military activities, deployments, and potential missions."
-		userPrompt := string(dataJSON)
+		// Build a concise summary prompt instead of sending raw JSON
+		userPrompt := buildDataSummary(data)
+		systemPrompt := "You are a military intelligence analyst. Analyze the following tracking data and provide a structured assessment of military activities, deployments, and potential missions. Focus on unusual patterns, high-interest assets, and correlations between aircraft movements and news events."
 
 		// Run council
 		responses := enrichment.RunCouncil(ctx, members, systemPrompt, userPrompt)
+		for _, r := range responses {
+			if r.Err != nil {
+				log.Printf("Council member %s FAILED (%v): %v", r.Provider, r.Latency, r.Err)
+			} else {
+				log.Printf("Council member %s OK (%v): %d chars", r.Provider, r.Latency, len(r.Response))
+			}
+		}
 		successful := enrichment.SuccessfulResponses(responses)
 
 		if len(successful) > 0 {
@@ -285,6 +302,69 @@ func run() error {
 	fmt.Println("KML written to output/tracker.kml")
 
 	return nil
+}
+
+// buildDataSummary creates a concise text summary of collected data for AI analysis.
+// Sending raw JSON of hundreds of aircraft would exceed token limits, so we summarize.
+func buildDataSummary(data models.CollectedData) string {
+	var b bytes.Buffer
+	fmt.Fprintf(&b, "=== MILITARY TRACKING DATA (%s UTC) ===\n\n", data.Timestamp.Format("2006-01-02 15:04"))
+
+	// Aircraft: show up to 50 most interesting (those with callsigns or type info)
+	fmt.Fprintf(&b, "AIRCRAFT (%d total tracked):\n", len(data.Aircraft))
+	shown := 0
+	for _, a := range data.Aircraft {
+		if shown >= 50 {
+			fmt.Fprintf(&b, "... and %d more aircraft\n", len(data.Aircraft)-50)
+			break
+		}
+		callsign := a.Callsign
+		if callsign == "" {
+			callsign = "UNKNOWN"
+		}
+		fmt.Fprintf(&b, "- %s | Hex:%s | Alt:%dft | Speed:%dkts | Lat:%.2f Lon:%.2f",
+			callsign, a.Hex, int(a.Altitude), int(a.Speed), a.Lat, a.Lon)
+		if a.Type != "" {
+			fmt.Fprintf(&b, " | Type:%s", a.Type)
+		}
+		b.WriteString("\n")
+		shown++
+	}
+
+	// Vessels
+	if len(data.Vessels) > 0 {
+		fmt.Fprintf(&b, "\nVESSELS (%d tracked):\n", len(data.Vessels))
+		for _, v := range data.Vessels {
+			fmt.Fprintf(&b, "- %s (MMSI:%s) | Lat:%.2f Lon:%.2f | Speed:%.1fkts | Type:%s\n",
+				v.Name, v.MMSI, v.Lat, v.Lon, v.Speed, v.Type)
+		}
+	}
+
+	// Events
+	if len(data.Events) > 0 {
+		fmt.Fprintf(&b, "\nEVENTS (%d):\n", len(data.Events))
+		for _, e := range data.Events {
+			fmt.Fprintf(&b, "- [%s] %s | %s | Lat:%.2f Lon:%.2f\n",
+				e.Source, e.Title, e.Type, e.Lat, e.Lon)
+		}
+	}
+
+	// News
+	if len(data.News) > 0 {
+		fmt.Fprintf(&b, "\nNEWS (%d items):\n", len(data.News))
+		limit := len(data.News)
+		if limit > 20 {
+			limit = 20
+		}
+		for _, n := range data.News[:limit] {
+			fmt.Fprintf(&b, "- %s (Source: %s)\n", n.Title, n.Source)
+		}
+		if len(data.News) > 20 {
+			fmt.Fprintf(&b, "... and %d more news items\n", len(data.News)-20)
+		}
+	}
+
+	return b.String()
 }
 
 // saveJSON marshals v as indented JSON and writes it to the given path.
