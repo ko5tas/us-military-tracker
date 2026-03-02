@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"sync"
 	"time"
 
@@ -223,7 +224,7 @@ func run() error {
 	if len(members) > 0 {
 		// Build a concise summary prompt instead of sending raw JSON
 		userPrompt := buildDataSummary(data)
-		systemPrompt := "You are a military intelligence analyst. Analyze the following tracking data and provide a structured assessment of military activities, deployments, and potential missions. Focus on unusual patterns, high-interest assets, and correlations between aircraft movements and news events."
+		systemPrompt := buildStructuredSystemPrompt()
 
 		// Run council
 		responses := enrichment.RunCouncil(ctx, members, systemPrompt, userPrompt)
@@ -262,11 +263,26 @@ func run() error {
 			}
 
 			if chairmanProvider != nil {
-				// Run chairman synthesis
-				synthesisPrompt := enrichment.BuildSynthesisPrompt(successful)
-				_, synthErr := chairmanProvider.Complete(ctx, "You are the chairman synthesizer.", synthesisPrompt)
+				// Run chairman synthesis with structured JSON output request
+				synthesisPrompt := buildStructuredSynthesisPrompt(successful)
+				synthResp, synthErr := chairmanProvider.Complete(ctx, buildStructuredSystemPrompt(), synthesisPrompt)
 				if synthErr != nil {
 					log.Printf("WARNING: chairman synthesis failed: %v", synthErr)
+				} else {
+					// Parse the structured JSON response from the chairman
+					parsed, parseErr := parseCouncilJSON(synthResp)
+					if parseErr != nil {
+						log.Printf("WARNING: failed to parse chairman JSON response, continuing with unenriched data: %v", parseErr)
+					} else {
+						// Merge aircraft enrichments back into data
+						mergeAircraftEnrichments(&data, parsed.AircraftEnrichments)
+						// Add carrier deployments as vessels
+						addCarrierDeployments(&data, parsed.CarrierDeployments)
+						// Set the intelligence summary
+						data.Summary = parsed.IntelligenceSummary
+						log.Printf("AI enrichment applied: %d aircraft enriched, %d carrier deployments added",
+							len(parsed.AircraftEnrichments), len(parsed.CarrierDeployments))
+					}
 				}
 			}
 
@@ -365,6 +381,164 @@ func buildDataSummary(data models.CollectedData) string {
 	}
 
 	return b.String()
+}
+
+// councilJSON represents the structured JSON response expected from the AI council.
+type councilJSON struct {
+	AircraftEnrichments  []aircraftEnrichment `json:"aircraft_enrichments"`
+	CarrierDeployments   []carrierDeployment  `json:"carrier_deployments"`
+	IntelligenceSummary  string               `json:"intelligence_summary"`
+}
+
+// aircraftEnrichment is the AI's assessment of a specific tracked aircraft.
+type aircraftEnrichment struct {
+	Hex        string `json:"hex"`
+	Branch     string `json:"branch"`
+	Mission    string `json:"mission"`
+	Assessment string `json:"assessment"`
+}
+
+// carrierDeployment represents a known carrier/vessel deployment from AI analysis.
+type carrierDeployment struct {
+	Name    string  `json:"name"`
+	Lat     float64 `json:"lat"`
+	Lon     float64 `json:"lon"`
+	Status  string  `json:"status"`
+	Details string  `json:"details"`
+}
+
+// buildStructuredSystemPrompt returns the system prompt that instructs the AI to
+// return a structured JSON response with enrichments and deployments.
+func buildStructuredSystemPrompt() string {
+	return `You are a military intelligence analyst. Analyze the tracking data and return ONLY a valid JSON object with exactly this structure (no markdown, no code fences, no extra text):
+
+{
+  "aircraft_enrichments": [
+    {
+      "hex": "HEX_CODE",
+      "branch": "USAF|USN|USMC|USA|USCG",
+      "mission": "short mission type like transport, ISR, patrol, tanker, training, etc.",
+      "assessment": "1-2 sentence assessment of this aircraft's likely activity"
+    }
+  ],
+  "carrier_deployments": [
+    {
+      "name": "USS Ship Name (CSG-N)",
+      "lat": 0.0,
+      "lon": 0.0,
+      "status": "deployed|in-port|transit",
+      "details": "Brief description of current deployment area and mission"
+    }
+  ],
+  "intelligence_summary": "2-4 paragraph overall intelligence assessment covering key military activities, unusual patterns, and strategic implications observed in the data."
+}
+
+Rules:
+- aircraft_enrichments: Only include the most notable/interesting aircraft (up to 20). Match by hex code from the data.
+- carrier_deployments: Include CURRENT known US Navy carrier strike group positions based on recent news and military reporting. Use approximate coordinates. Include 3-5 carrier groups if known.
+- intelligence_summary: Provide a concise but thorough assessment of overall military posture and activity patterns.
+- Return ONLY the JSON object. No other text before or after.`
+}
+
+// buildStructuredSynthesisPrompt constructs the chairman synthesis prompt that
+// includes all council analyses and asks for a structured JSON output.
+func buildStructuredSynthesisPrompt(responses []enrichment.CouncilResponse) string {
+	var b bytes.Buffer
+
+	b.WriteString("You are the chairman synthesizer. Below are independent analyses from multiple AI council members. ")
+	b.WriteString("Synthesize them into a single, authoritative assessment. ")
+	b.WriteString("Resolve any contradictions by favoring the most detailed and well-reasoned analysis.\n\n")
+
+	for i, r := range responses {
+		fmt.Fprintf(&b, "=== Analysis %d ===\n%s\n\n", i+1, r.Response)
+	}
+
+	b.WriteString("Combine the above analyses into your final synthesized response. ")
+	b.WriteString("Return ONLY a valid JSON object following the exact schema from your instructions. No markdown, no code fences.")
+
+	return b.String()
+}
+
+// parseCouncilJSON attempts to parse the AI response as structured JSON.
+// It handles common issues like markdown code fences wrapping the JSON.
+func parseCouncilJSON(response string) (*councilJSON, error) {
+	// Try to extract JSON from the response (handle markdown code fences)
+	cleaned := strings.TrimSpace(response)
+
+	// Strip markdown code fences if present
+	if strings.HasPrefix(cleaned, "```json") {
+		cleaned = strings.TrimPrefix(cleaned, "```json")
+		if idx := strings.LastIndex(cleaned, "```"); idx >= 0 {
+			cleaned = cleaned[:idx]
+		}
+		cleaned = strings.TrimSpace(cleaned)
+	} else if strings.HasPrefix(cleaned, "```") {
+		cleaned = strings.TrimPrefix(cleaned, "```")
+		if idx := strings.LastIndex(cleaned, "```"); idx >= 0 {
+			cleaned = cleaned[:idx]
+		}
+		cleaned = strings.TrimSpace(cleaned)
+	}
+
+	// Try to find a JSON object in the response
+	startIdx := strings.Index(cleaned, "{")
+	endIdx := strings.LastIndex(cleaned, "}")
+	if startIdx >= 0 && endIdx > startIdx {
+		cleaned = cleaned[startIdx : endIdx+1]
+	}
+
+	var result councilJSON
+	if err := json.Unmarshal([]byte(cleaned), &result); err != nil {
+		return nil, fmt.Errorf("unmarshal council JSON: %w (first 200 chars: %.200s)", err, cleaned)
+	}
+
+	return &result, nil
+}
+
+// mergeAircraftEnrichments applies AI-generated enrichments to matching aircraft
+// in the collected data (matched by hex code).
+func mergeAircraftEnrichments(data *models.CollectedData, enrichments []aircraftEnrichment) {
+	if len(enrichments) == 0 {
+		return
+	}
+
+	// Build a lookup map for fast matching
+	enrichMap := make(map[string]aircraftEnrichment, len(enrichments))
+	for _, e := range enrichments {
+		enrichMap[strings.ToUpper(e.Hex)] = e
+	}
+
+	for i := range data.Aircraft {
+		if e, ok := enrichMap[strings.ToUpper(data.Aircraft[i].Hex)]; ok {
+			// Only overwrite if the AI provided a non-empty value and the original is empty
+			if data.Aircraft[i].Branch == "" && e.Branch != "" {
+				data.Aircraft[i].Branch = e.Branch
+			}
+			if data.Aircraft[i].Mission == "" && e.Mission != "" {
+				data.Aircraft[i].Mission = e.Mission
+			}
+		}
+	}
+}
+
+// addCarrierDeployments converts AI-identified carrier deployments into Vessel
+// entries and appends them to the collected data.
+func addCarrierDeployments(data *models.CollectedData, deployments []carrierDeployment) {
+	for _, d := range deployments {
+		if d.Name == "" {
+			continue
+		}
+		vessel := models.Vessel{
+			Name:   d.Name,
+			Type:   "carrier_strike_group",
+			Lat:    d.Lat,
+			Lon:    d.Lon,
+			Source: "ai_intel",
+			Branch: "USN",
+			Class:  d.Status,
+		}
+		data.Vessels = append(data.Vessels, vessel)
+	}
 }
 
 // saveJSON marshals v as indented JSON and writes it to the given path.

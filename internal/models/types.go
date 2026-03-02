@@ -77,6 +77,7 @@ type CollectedData struct {
 	News      []NewsItem `json:"news"`
 	Bases     []Base     `json:"bases"`
 	Timestamp time.Time  `json:"timestamp"`
+	Summary   string     `json:"summary,omitempty"`
 }
 
 // EnrichedAsset is the AI council's output for a single asset.
