@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "last_evolved": "2026-03-02T00:00:00Z",
+  "council": {
+    "members": [
+      {
+        "id": "groq-llama-3.3-70b",
+        "type": "api",
+        "endpoint": "https://api.groq.com/openai/v1",
+        "model": "llama-3.3-70b-versatile",
+        "daily_limit": 14400,
+        "quality_score": 0.5,
+        "status": "active",
+        "shadow_weeks": 0
+      },
+      {
+        "id": "gemini-flash-lite",
+        "type": "api",
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+        "model": "gemini-2.5-flash-lite",
+        "daily_limit": 1000,
+        "quality_score": 0.5,
+        "status": "active",
+        "shadow_weeks": 0
+      },
+      {
+        "id": "local-qwen-2.5-1.5b",
+        "type": "local",
+        "model": "qwen2.5:1.5b",
+        "daily_limit": 0,
+        "quality_score": 0.5,
+        "status": "active",
+        "shadow_weeks": 0
+      },
+      {
+        "id": "mistral-small",
+        "type": "api",
+        "endpoint": "https://api.mistral.ai/v1",
+        "model": "mistral-small-latest",
+        "daily_limit": 33000,
+        "quality_score": 0.5,
+        "status": "active",
+        "shadow_weeks": 0
+      },
+      {
+        "id": "deepseek-v3",
+        "type": "api",
+        "endpoint": "https://api.deepseek.com",
+        "model": "deepseek-chat",
+        "daily_limit": 0,
+        "quality_score": 0.5,
+        "status": "active",
+        "shadow_weeks": 0
+      }
+    ],
+    "candidates": []
+  }
+}
