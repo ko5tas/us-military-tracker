@@ -330,8 +330,32 @@ func buildAircraftFolder(aircraft []models.Aircraft) Folder {
 func buildVesselsFolder(vessels []models.Vessel) Folder {
 	var placemarks []Placemark
 	for _, v := range vessels {
-		desc := fmt.Sprintf("Type: %s\nMMSI: %s\nSpeed: %.1f kts\nHeading: %.1f",
-			v.Type, v.MMSI, v.Speed, v.Heading)
+		var descParts []string
+		if v.Branch != "" {
+			descParts = append(descParts, fmt.Sprintf("Branch: %s", v.Branch))
+		}
+		if v.Class != "" {
+			descParts = append(descParts, fmt.Sprintf("Status: %s", v.Class))
+		}
+		if v.Type != "" && v.Type != "carrier_strike_group" {
+			descParts = append(descParts, fmt.Sprintf("Type: %s", v.Type))
+		} else if v.Type == "carrier_strike_group" {
+			descParts = append(descParts, "Type: Aircraft Carrier Strike Group")
+		}
+		if v.MMSI != "" {
+			descParts = append(descParts, fmt.Sprintf("MMSI: %s", v.MMSI))
+		}
+		if v.Speed > 0 {
+			descParts = append(descParts, fmt.Sprintf("Speed: %.1f kts", v.Speed))
+		}
+		if v.Heading > 0 {
+			descParts = append(descParts, fmt.Sprintf("Heading: %.1f", v.Heading))
+		}
+		if v.Source != "" {
+			descParts = append(descParts, fmt.Sprintf("Source: %s", v.Source))
+		}
+		desc := strings.Join(descParts, "\n")
+
 		placemarks = append(placemarks, Placemark{
 			Name:        v.Name,
 			Description: desc,

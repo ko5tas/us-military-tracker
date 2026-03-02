@@ -528,6 +528,14 @@ func addCarrierDeployments(data *models.CollectedData, deployments []carrierDepl
 		if d.Name == "" {
 			continue
 		}
+		status := d.Status
+		if d.Details != "" {
+			if status != "" {
+				status += " — " + d.Details
+			} else {
+				status = d.Details
+			}
+		}
 		vessel := models.Vessel{
 			Name:   d.Name,
 			Type:   "carrier_strike_group",
@@ -535,7 +543,7 @@ func addCarrierDeployments(data *models.CollectedData, deployments []carrierDepl
 			Lon:    d.Lon,
 			Source: "ai_intel",
 			Branch: "USN",
-			Class:  d.Status,
+			Class:  status,
 		}
 		data.Vessels = append(data.Vessels, vessel)
 	}
