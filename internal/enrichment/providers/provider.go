@@ -27,6 +27,7 @@ type ChatRequest struct {
 	Model       string        `json:"model"`
 	Messages    []ChatMessage `json:"messages"`
 	Temperature float64       `json:"temperature"`
+	MaxTokens   int           `json:"max_tokens,omitempty"`
 }
 
 // Choice represents one completion choice in the response.
@@ -123,37 +124,37 @@ func (p *OpenAIProvider) Complete(ctx context.Context, systemPrompt, userPrompt 
 }
 
 // newOpenAI creates an OpenAIProvider with the given configuration.
-func newOpenAI(name, baseURL, apiKey, model string) *OpenAIProvider {
+func newOpenAI(name, baseURL, apiKey, model string, timeout time.Duration) *OpenAIProvider {
 	return &OpenAIProvider{
 		ProviderName: name,
 		BaseURL:      baseURL,
 		APIKey:       apiKey,
 		ModelName:    model,
-		HTTPClient:   &http.Client{Timeout: 60 * time.Second},
+		HTTPClient:   &http.Client{Timeout: timeout},
 	}
 }
 
 // NewGroq creates a Completer backed by the Groq API.
 func NewGroq(apiKey string) Completer {
-	return newOpenAI("groq", "https://api.groq.com/openai/v1", apiKey, "llama-3.3-70b-versatile")
+	return newOpenAI("groq", "https://api.groq.com/openai/v1", apiKey, "llama-3.3-70b-versatile", 30*time.Second)
 }
 
 // NewMistral creates a Completer backed by the Mistral API.
 func NewMistral(apiKey string) Completer {
-	return newOpenAI("mistral", "https://api.mistral.ai/v1", apiKey, "mistral-small-latest")
+	return newOpenAI("mistral", "https://api.mistral.ai/v1", apiKey, "mistral-small-latest", 30*time.Second)
 }
 
 // NewDeepSeek creates a Completer backed by the DeepSeek API.
 func NewDeepSeek(apiKey string) Completer {
-	return newOpenAI("deepseek", "https://api.deepseek.com", apiKey, "deepseek-chat")
+	return newOpenAI("deepseek", "https://api.deepseek.com", apiKey, "deepseek-chat", 30*time.Second)
 }
 
 // NewOpenRouter creates a Completer backed by the OpenRouter API.
 func NewOpenRouter(apiKey string) Completer {
-	return newOpenAI("openrouter", "https://openrouter.ai/api/v1", apiKey, "meta-llama/llama-3.3-70b-instruct:free")
+	return newOpenAI("openrouter", "https://openrouter.ai/api/v1", apiKey, "meta-llama/llama-3.3-70b-instruct:free", 30*time.Second)
 }
 
 // NewOllama creates a Completer backed by a local Ollama instance.
 func NewOllama() Completer {
-	return newOpenAI("ollama", "http://localhost:11434/v1", "", "qwen2.5:1.5b")
+	return newOpenAI("ollama", "http://localhost:11434/v1", "", "qwen2.5:1.5b", 120*time.Second)
 }
