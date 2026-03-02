@@ -166,6 +166,33 @@ func TestGenerateKML(t *testing.T) {
 	if !strings.Contains(kmlStr, "-77.0369,38.9072,35000") {
 		t.Error("KML output should contain aircraft coordinates in lon,lat,alt format")
 	}
+
+	// Verify style definitions are present
+	if !strings.Contains(kmlStr, `id="usaf"`) {
+		t.Error("KML output should contain USAF style definition")
+	}
+	if !strings.Contains(kmlStr, `id="vessel"`) {
+		t.Error("KML output should contain vessel style definition")
+	}
+	if !strings.Contains(kmlStr, `id="event"`) {
+		t.Error("KML output should contain event style definition")
+	}
+
+	// Verify styleUrl references are set on placemarks
+	if !strings.Contains(kmlStr, "#usaf") {
+		t.Error("KML output should reference USAF style on aircraft")
+	}
+	if !strings.Contains(kmlStr, "#vessel") {
+		t.Error("KML output should reference vessel style on vessels")
+	}
+	if !strings.Contains(kmlStr, "#event") {
+		t.Error("KML output should reference event style on events")
+	}
+
+	// Verify icon hrefs are present
+	if !strings.Contains(kmlStr, "maps.google.com/mapfiles/kml/paddle/") {
+		t.Error("KML output should contain Google Maps paddle icon URLs")
+	}
 }
 
 func TestGenerateKMLValidXML(t *testing.T) {

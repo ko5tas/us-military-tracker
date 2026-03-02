@@ -165,7 +165,33 @@ type KML struct {
 type Document struct {
 	Name        string   `xml:"name"`
 	Description string   `xml:"description"`
+	Styles      []Style  `xml:"Style,omitempty"`
 	Folders     []Folder `xml:"Folder"`
+}
+
+// Style represents a KML Style element with icon and label styling.
+type Style struct {
+	ID         string     `xml:"id,attr"`
+	IconStyle  IconStyle  `xml:"IconStyle"`
+	LabelStyle LabelStyle `xml:"LabelStyle"`
+}
+
+// IconStyle defines the icon appearance in a KML Style.
+type IconStyle struct {
+	Color string `xml:"color"`
+	Scale string `xml:"scale"`
+	Icon  Icon   `xml:"Icon"`
+}
+
+// Icon defines the icon href in a KML IconStyle.
+type Icon struct {
+	Href string `xml:"href"`
+}
+
+// LabelStyle defines the label appearance in a KML Style.
+type LabelStyle struct {
+	Color string `xml:"color"`
+	Scale string `xml:"scale"`
 }
 
 // Folder represents a KML Folder element.
@@ -178,6 +204,7 @@ type Folder struct {
 // Placemark represents a KML Placemark element.
 type Placemark struct {
 	Name        string `xml:"name"`
+	StyleURL    string `xml:"styleUrl,omitempty"`
 	Description string `xml:"description"`
 	Point       Point  `xml:"Point"`
 }
@@ -185,6 +212,69 @@ type Placemark struct {
 // Point represents a KML Point element.
 type Point struct {
 	Coordinates string `xml:"coordinates"`
+}
+
+// Style IDs for different asset categories.
+const (
+	styleUSAF     = "usaf"     // Air Force — green
+	styleUSN      = "usn"      // Navy — blue
+	styleUSMC     = "usmc"     // Marines — yellow
+	styleUSCG     = "uscg"     // Coast Guard — orange
+	styleAircraft = "aircraft" // Unknown branch aircraft — white
+	styleVessel   = "vessel"   // Navy vessels — dark blue
+	styleBase     = "base"     // Military bases — orange
+	styleEvent    = "event"    // Conflict events — red
+	styleNews     = "news"     // News items — cyan
+	styleIntel    = "intel"    // Intelligence summary — purple
+)
+
+// kmlStyles returns the set of KML Style elements used by the generated document.
+// KML colors use AABBGGRR format (not AARRGGBB).
+func kmlStyles() []Style {
+	return []Style{
+		{ID: styleUSAF, IconStyle: IconStyle{Color: "ff00aa00", Scale: "1.1", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/grn-blank.png"}}, LabelStyle: LabelStyle{Color: "ff00aa00", Scale: "0.75"}},
+		{ID: styleUSN, IconStyle: IconStyle{Color: "ffff0000", Scale: "1.1", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/blu-blank.png"}}, LabelStyle: LabelStyle{Color: "ffff0000", Scale: "0.75"}},
+		{ID: styleUSMC, IconStyle: IconStyle{Color: "ff00aaff", Scale: "1.1", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/ylw-blank.png"}}, LabelStyle: LabelStyle{Color: "ff00aaff", Scale: "0.75"}},
+		{ID: styleUSCG, IconStyle: IconStyle{Color: "ff0055ff", Scale: "1.0", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/orange-blank.png"}}, LabelStyle: LabelStyle{Color: "ff0055ff", Scale: "0.75"}},
+		{ID: styleAircraft, IconStyle: IconStyle{Color: "ffffffff", Scale: "0.9", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/wht-blank.png"}}, LabelStyle: LabelStyle{Color: "ffffffff", Scale: "0.7"}},
+		{ID: styleVessel, IconStyle: IconStyle{Color: "ffff5500", Scale: "1.2", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/blu-blank.png"}}, LabelStyle: LabelStyle{Color: "ffff5500", Scale: "0.75"}},
+		{ID: styleBase, IconStyle: IconStyle{Color: "ff0055ff", Scale: "1.1", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/orange-blank.png"}}, LabelStyle: LabelStyle{Color: "ff0055ff", Scale: "0.75"}},
+		{ID: styleEvent, IconStyle: IconStyle{Color: "ff0000ff", Scale: "1.3", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/red-stars.png"}}, LabelStyle: LabelStyle{Color: "ff0000ff", Scale: "0.8"}},
+		{ID: styleNews, IconStyle: IconStyle{Color: "ffffff00", Scale: "0.9", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/ltblu-blank.png"}}, LabelStyle: LabelStyle{Color: "ffffff00", Scale: "0.7"}},
+		{ID: styleIntel, IconStyle: IconStyle{Color: "ff880088", Scale: "1.0", Icon: Icon{Href: "http://maps.google.com/mapfiles/kml/paddle/purple-blank.png"}}, LabelStyle: LabelStyle{Color: "ff880088", Scale: "0.75"}},
+	}
+}
+
+// aircraftStyleURL returns the style URL for a given military branch.
+func aircraftStyleURL(branch string) string {
+	switch strings.ToUpper(branch) {
+	case "USAF":
+		return "#" + styleUSAF
+	case "USN":
+		return "#" + styleUSN
+	case "USMC":
+		return "#" + styleUSMC
+	case "USCG":
+		return "#" + styleUSCG
+	default:
+		return "#" + styleAircraft
+	}
+}
+
+// baseStyleURL returns the style URL for a base, falling back to the generic base style.
+func baseStyleURL(branch string) string {
+	switch strings.ToUpper(branch) {
+	case "USAF":
+		return "#" + styleUSAF
+	case "USN":
+		return "#" + styleUSN
+	case "USMC":
+		return "#" + styleUSMC
+	case "USCG":
+		return "#" + styleUSCG
+	default:
+		return "#" + styleBase
+	}
 }
 
 // Generate creates a KML file at the given outputPath from the collected data.
@@ -196,6 +286,7 @@ func Generate(outputPath string, data *models.CollectedData, chairman string, sc
 			Name: "US Military Tracker",
 			Description: fmt.Sprintf("Generated: %s | Chairman: %s | Score: %.2f",
 				data.Timestamp.Format(time.RFC3339), chairman, score),
+			Styles: kmlStyles(),
 		},
 	}
 
@@ -308,6 +399,7 @@ func buildAircraftFolder(aircraft []models.Aircraft) Folder {
 
 			placemarks = append(placemarks, Placemark{
 				Name:        name,
+				StyleURL:    aircraftStyleURL(a.Branch),
 				Description: desc,
 				Point: Point{
 					Coordinates: fmt.Sprintf("%v,%v,%d", a.Lon, a.Lat, a.Altitude),
@@ -358,6 +450,7 @@ func buildVesselsFolder(vessels []models.Vessel) Folder {
 
 		placemarks = append(placemarks, Placemark{
 			Name:        v.Name,
+			StyleURL:    "#" + styleVessel,
 			Description: desc,
 			Point: Point{
 				Coordinates: fmt.Sprintf("%v,%v,0", v.Lon, v.Lat),
@@ -379,6 +472,7 @@ func buildBasesFolder(bases []models.Base) Folder {
 			b.Branch, b.Country, b.Type)
 		placemarks = append(placemarks, Placemark{
 			Name:        b.Name,
+			StyleURL:    baseStyleURL(b.Branch),
 			Description: desc,
 			Point: Point{
 				Coordinates: fmt.Sprintf("%v,%v,0", b.Lon, b.Lat),
@@ -400,6 +494,7 @@ func buildEventsFolder(events []models.Event) Folder {
 			e.Type, e.Source, e.Date, e.Description)
 		placemarks = append(placemarks, Placemark{
 			Name:        e.Title,
+			StyleURL:    "#" + styleEvent,
 			Description: desc,
 			Point: Point{
 				Coordinates: fmt.Sprintf("%v,%v,0", e.Lon, e.Lat),
@@ -423,6 +518,7 @@ func buildNewsFolder(news []models.NewsItem) Folder {
 		}
 		placemarks = append(placemarks, Placemark{
 			Name:        n.Title,
+			StyleURL:    "#" + styleNews,
 			Description: fmt.Sprintf("Source: %s\n%s", n.Source, n.Description),
 			Point: Point{
 				Coordinates: fmt.Sprintf("%v,%v,0", n.Lon, n.Lat),
@@ -444,6 +540,7 @@ func buildIntelligenceFolder(summary string) Folder {
 		Placemarks: []Placemark{
 			{
 				Name:        "AI Council Assessment",
+				StyleURL:    "#" + styleIntel,
 				Description: summary,
 				Point: Point{
 					Coordinates: "0,0,0",
