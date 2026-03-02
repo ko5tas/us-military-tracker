@@ -56,6 +56,7 @@ type OpenAIProvider struct {
 	BaseURL      string
 	APIKey       string
 	ModelName    string
+	MaxTokens    int
 	HTTPClient   *http.Client
 }
 
@@ -66,6 +67,10 @@ func (p *OpenAIProvider) Name() string {
 
 // Complete sends a chat completion request to an OpenAI-compatible endpoint.
 func (p *OpenAIProvider) Complete(ctx context.Context, systemPrompt, userPrompt string) (string, error) {
+	maxTokens := p.MaxTokens
+	if maxTokens == 0 {
+		maxTokens = 4096
+	}
 	reqBody := ChatRequest{
 		Model: p.ModelName,
 		Messages: []ChatMessage{
@@ -73,6 +78,7 @@ func (p *OpenAIProvider) Complete(ctx context.Context, systemPrompt, userPrompt 
 			{Role: "user", Content: userPrompt},
 		},
 		Temperature: 0.3,
+		MaxTokens:   maxTokens,
 	}
 
 	bodyBytes, err := json.Marshal(reqBody)
