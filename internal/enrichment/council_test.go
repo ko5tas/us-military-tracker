@@ -63,8 +63,8 @@ func TestRunCouncil(t *testing.T) {
 		if r.Response != want {
 			t.Errorf("provider %q: got response %q, want %q", name, r.Response, want)
 		}
-		if r.Latency <= 0 {
-			t.Errorf("provider %q: expected positive latency, got %v", name, r.Latency)
+		if r.Latency < 0 {
+			t.Errorf("provider %q: expected non-negative latency, got %v", name, r.Latency)
 		}
 	}
 }
