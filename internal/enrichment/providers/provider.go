@@ -160,6 +160,11 @@ func NewOpenRouter(apiKey string) Completer {
 	return newOpenAI("openrouter", "https://openrouter.ai/api/v1", apiKey, "meta-llama/llama-3.3-70b-instruct:free", 30*time.Second)
 }
 
+// NewChatGPT creates a Completer backed by the OpenAI ChatGPT API.
+func NewChatGPT(apiKey string) Completer {
+	return newOpenAI("chatgpt", "https://api.openai.com/v1", apiKey, "gpt-4o-mini", 30*time.Second)
+}
+
 // NewOllama creates a Completer backed by a local Ollama instance.
 func NewOllama() Completer {
 	return newOpenAI("ollama", "http://localhost:11434/v1", "", "qwen2.5:1.5b", 120*time.Second)

@@ -54,6 +54,8 @@ func run() error {
 	mistralKey := os.Getenv("MISTRAL_API_KEY")
 	deepseekKey := os.Getenv("DEEPSEEK_API_KEY")
 	openrouterKey := os.Getenv("OPENROUTER_API_KEY")
+	openaiKey := os.Getenv("OPENAI_API_KEY")
+	anthropicKey := os.Getenv("ANTHROPIC_API_KEY")
 	aisstreamKey := os.Getenv("AISSTREAM_API_KEY")
 	gnewsKey := os.Getenv("GNEWS_API_KEY")
 	acledKey := os.Getenv("ACLED_API_KEY")
@@ -207,6 +209,14 @@ func run() error {
 	if openrouterKey != "" {
 		members = append(members, providers.NewOpenRouter(openrouterKey))
 		log.Println("Initialized provider: openrouter")
+	}
+	if openaiKey != "" {
+		members = append(members, providers.NewChatGPT(openaiKey))
+		log.Println("Initialized provider: chatgpt")
+	}
+	if anthropicKey != "" {
+		members = append(members, providers.NewClaude(anthropicKey))
+		log.Println("Initialized provider: claude")
 	}
 
 	// Add local Ollama as a council member (always available on the runner)

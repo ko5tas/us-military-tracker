@@ -21,6 +21,7 @@ go test ./...                  # Run all tests
 
 AI providers (set whichever keys you have):
 - `GEMINI_API_KEY`, `GROQ_API_KEY`, `MISTRAL_API_KEY`, `DEEPSEEK_API_KEY`, `OPENROUTER_API_KEY`
+- `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` — optional paid providers (ChatGPT gpt-4o-mini, Claude Haiku)
 
 Data sources:
 - `AISSTREAM_API_KEY` — vessel tracking (free via GitHub auth at aisstream.io)
@@ -45,7 +46,7 @@ Data sources:
 
 - `internal/collectors/` — aircraft (3 ADS-B APIs), vessels (AISStream WebSocket), events (GDELT/ACLED), news (GNews/RSS)
 - `internal/enrichment/` — council orchestration, chairman selection/scoring, evaluation heuristics
-- `internal/enrichment/providers/` — Completer interface, OpenAI-compatible client (Groq/Mistral/DeepSeek/OpenRouter/Ollama), Gemini SDK
+- `internal/enrichment/providers/` — Completer interface, OpenAI-compatible client (Groq/Mistral/DeepSeek/OpenRouter/ChatGPT/Ollama), Gemini SDK, Anthropic Claude
 - `internal/kml/` — KML/XML generation with encoding/xml
 - `internal/platform/` — GitHub runner monitoring, model discovery/evolution
 - `internal/models/` — shared data types
