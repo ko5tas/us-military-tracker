@@ -656,9 +656,9 @@ func addVesselDeployments(data *models.CollectedData, deployments []vesselDeploy
 // findVesselByName returns the index of a vessel whose name matches the given
 // name (case-insensitive substring match in either direction), or -1 if not found.
 func findVesselByName(vessels []models.Vessel, name string) int {
-	nameLower := strings.ToLower(name)
+	nameLower := strings.ToLower(strings.TrimSpace(name))
 	for i, v := range vessels {
-		vLower := strings.ToLower(v.Name)
+		vLower := strings.ToLower(strings.TrimSpace(v.Name))
 		if strings.Contains(nameLower, vLower) || strings.Contains(vLower, nameLower) {
 			return i
 		}
