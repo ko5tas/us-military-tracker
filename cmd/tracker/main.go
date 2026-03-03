@@ -262,28 +262,78 @@ func run() error {
 				}
 			}
 
+			// Try synthesis with fallback chain
+			var parsed *councilJSON
+			actualChairman := chairman
+			synthesisPrompt := buildStructuredSynthesisPrompt(successful)
+			sysPrompt := buildStructuredSystemPrompt()
+
+			// Step 1: Try the selected chairman
 			if chairmanProvider != nil {
-				// Run chairman synthesis with structured JSON output request
-				synthesisPrompt := buildStructuredSynthesisPrompt(successful)
-				synthResp, synthErr := chairmanProvider.Complete(ctx, buildStructuredSystemPrompt(), synthesisPrompt)
+				synthResp, synthErr := chairmanProvider.Complete(ctx, sysPrompt, synthesisPrompt)
 				if synthErr != nil {
-					log.Printf("WARNING: chairman synthesis failed: %v", synthErr)
+					log.Printf("WARNING: chairman %s synthesis failed: %v", chairman, synthErr)
 				} else {
-					// Parse the structured JSON response from the chairman
-					parsed, parseErr := parseCouncilJSON(synthResp)
+					p, parseErr := parseCouncilJSON(synthResp)
 					if parseErr != nil {
-						log.Printf("WARNING: failed to parse chairman JSON response, continuing with unenriched data: %v", parseErr)
+						log.Printf("WARNING: chairman %s returned unparseable JSON: %v", chairman, parseErr)
 					} else {
-						// Merge aircraft enrichments back into data
-						mergeAircraftEnrichments(&data, parsed.AircraftEnrichments)
-						// Add carrier deployments as vessels
-						addCarrierDeployments(&data, parsed.CarrierDeployments)
-						// Set the intelligence summary
-						data.Summary = parsed.IntelligenceSummary
-						log.Printf("AI enrichment applied: %d aircraft enriched, %d carrier deployments added",
-							len(parsed.AircraftEnrichments), len(parsed.CarrierDeployments))
+						parsed = p
 					}
 				}
+			}
+
+			// Step 2: Try other successful providers as fallback chairman
+			if parsed == nil {
+				successfulNames := make(map[string]bool, len(successful))
+				for _, s := range successful {
+					successfulNames[s.Provider] = true
+				}
+				for _, m := range members {
+					if m.Name() == chairman || !successfulNames[m.Name()] {
+						continue
+					}
+					log.Printf("Trying fallback chairman: %s", m.Name())
+					synthResp, synthErr := m.Complete(ctx, sysPrompt, synthesisPrompt)
+					if synthErr != nil {
+						log.Printf("WARNING: fallback chairman %s failed: %v", m.Name(), synthErr)
+						continue
+					}
+					p, parseErr := parseCouncilJSON(synthResp)
+					if parseErr != nil {
+						log.Printf("WARNING: fallback chairman %s returned unparseable JSON: %v", m.Name(), parseErr)
+						continue
+					}
+					parsed = p
+					actualChairman = m.Name()
+					log.Printf("Fallback chairman %s succeeded", m.Name())
+					break
+				}
+			}
+
+			// Step 3: Try parsing individual council responses directly
+			if parsed == nil {
+				for _, resp := range successful {
+					p, parseErr := parseCouncilJSON(resp.Response)
+					if parseErr == nil {
+						parsed = p
+						actualChairman = resp.Provider
+						log.Printf("Using direct council response from %s (no synthesis)", resp.Provider)
+						break
+					}
+				}
+			}
+
+			// Apply enrichment if any fallback succeeded
+			if parsed != nil {
+				chairman = actualChairman
+				mergeAircraftEnrichments(&data, parsed.AircraftEnrichments)
+				addCarrierDeployments(&data, parsed.CarrierDeployments)
+				data.Summary = parsed.IntelligenceSummary
+				log.Printf("AI enrichment applied: %d aircraft enriched, %d carrier deployments added",
+					len(parsed.AircraftEnrichments), len(parsed.CarrierDeployments))
+			} else {
+				log.Printf("WARNING: all enrichment attempts failed, continuing with unenriched data")
 			}
 
 			// Use the chairman's score from the scores map
