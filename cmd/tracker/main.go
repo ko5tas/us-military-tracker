@@ -338,10 +338,10 @@ func run() error {
 			if parsed != nil {
 				chairman = actualChairman
 				mergeAircraftEnrichments(&data, parsed.AircraftEnrichments)
-				addCarrierDeployments(&data, parsed.CarrierDeployments)
+				addVesselDeployments(&data, parsed.VesselDeployments)
 				data.Summary = parsed.IntelligenceSummary
-				log.Printf("AI enrichment applied: %d aircraft enriched, %d carrier deployments added",
-					len(parsed.AircraftEnrichments), len(parsed.CarrierDeployments))
+				log.Printf("AI enrichment applied: %d aircraft enriched, %d vessel deployments added",
+					len(parsed.AircraftEnrichments), len(parsed.VesselDeployments))
 			} else {
 				log.Printf("WARNING: all enrichment attempts failed, continuing with unenriched data")
 			}
@@ -472,9 +472,9 @@ func buildDataSummary(data models.CollectedData) string {
 
 // councilJSON represents the structured JSON response expected from the AI council.
 type councilJSON struct {
-	AircraftEnrichments  []aircraftEnrichment `json:"aircraft_enrichments"`
-	CarrierDeployments   []carrierDeployment  `json:"carrier_deployments"`
-	IntelligenceSummary  string               `json:"intelligence_summary"`
+	AircraftEnrichments []aircraftEnrichment `json:"aircraft_enrichments"`
+	VesselDeployments   []vesselDeployment   `json:"vessel_deployments"`
+	IntelligenceSummary string               `json:"intelligence_summary"`
 }
 
 // aircraftEnrichment is the AI's assessment of a specific tracked aircraft.
@@ -485,9 +485,10 @@ type aircraftEnrichment struct {
 	Assessment string `json:"assessment"`
 }
 
-// carrierDeployment represents a known carrier/vessel deployment from AI analysis.
-type carrierDeployment struct {
+// vesselDeployment represents a known vessel deployment from AI analysis.
+type vesselDeployment struct {
 	Name    string  `json:"name"`
+	Type    string  `json:"type"`
 	Lat     float64 `json:"lat"`
 	Lon     float64 `json:"lon"`
 	Status  string  `json:"status"`
@@ -508,9 +509,10 @@ func buildStructuredSystemPrompt() string {
       "assessment": "1-2 sentence assessment of this aircraft's likely activity"
     }
   ],
-  "carrier_deployments": [
+  "vessel_deployments": [
     {
-      "name": "USS Ship Name (CSG-N)",
+      "name": "USS Ship Name (HULL-N)",
+      "type": "carrier_strike_group|amphibious_ready_group|destroyer|cruiser|submarine|other",
       "lat": 0.0,
       "lon": 0.0,
       "status": "deployed|in-port|transit",
@@ -522,7 +524,7 @@ func buildStructuredSystemPrompt() string {
 
 Rules:
 - aircraft_enrichments: Only include the most notable/interesting aircraft (up to 20). Match by hex code from the data.
-- carrier_deployments: Extract CURRENT US Navy carrier strike group positions from the FLEET/NAVAL INTELLIGENCE section. Use ship names, hull numbers, and geographic descriptions from the news. Convert to approximate lat/lon. Do NOT guess positions — only include carriers explicitly mentioned in the provided data with location information.
+- vessel_deployments: Extract ALL deployed US Navy vessel positions from the FLEET/NAVAL INTELLIGENCE section: carrier strike groups (CVN), amphibious ready groups (LHD/LHA), forward-deployed destroyers (DDG), and cruisers (CG). Use ship names, hull numbers, and geographic descriptions from the news. Convert to approximate lat/lon. Do NOT guess positions — only include vessels explicitly mentioned in the provided data with location information. Include up to 20 vessels.
 - intelligence_summary: Provide a concise but thorough assessment of overall military posture and activity patterns.
 - Return ONLY the JSON object. No other text before or after.`
 }
@@ -608,9 +610,9 @@ func mergeAircraftEnrichments(data *models.CollectedData, enrichments []aircraft
 	}
 }
 
-// addCarrierDeployments converts AI-identified carrier deployments into Vessel
+// addVesselDeployments converts AI-identified vessel deployments into Vessel
 // entries and appends them to the collected data.
-func addCarrierDeployments(data *models.CollectedData, deployments []carrierDeployment) {
+func addVesselDeployments(data *models.CollectedData, deployments []vesselDeployment) {
 	for _, d := range deployments {
 		if d.Name == "" {
 			continue
@@ -623,9 +625,13 @@ func addCarrierDeployments(data *models.CollectedData, deployments []carrierDepl
 				status = d.Details
 			}
 		}
+		vesselType := d.Type
+		if vesselType == "" {
+			vesselType = "warship"
+		}
 		vessel := models.Vessel{
 			Name:   d.Name,
-			Type:   "carrier_strike_group",
+			Type:   vesselType,
 			Lat:    d.Lat,
 			Lon:    d.Lon,
 			Source: "ai_intel",
