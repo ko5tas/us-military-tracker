@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
@@ -66,10 +67,29 @@ type rssChannel struct {
 
 // rssItem represents a single item in an RSS feed.
 type rssItem struct {
-	Title       string `xml:"title"`
-	Link        string `xml:"link"`
-	Description string `xml:"description"`
-	PubDate     string `xml:"pubDate"`
+	Title          string `xml:"title"`
+	Link           string `xml:"link"`
+	Description    string `xml:"description"`
+	ContentEncoded string `xml:"http://purl.org/rss/1.0/modules/content/ encoded"`
+	PubDate        string `xml:"pubDate"`
+}
+
+// htmlTagRe matches HTML/XML tags for stripping.
+var htmlTagRe = regexp.MustCompile(`<[^>]*>`)
+
+// stripHTMLTags removes HTML tags and decodes common entities, returning plain text.
+func stripHTMLTags(s string) string {
+	text := htmlTagRe.ReplaceAllString(s, " ")
+	// Decode common HTML entities
+	r := strings.NewReplacer(
+		"&amp;", "&", "&lt;", "<", "&gt;", ">",
+		"&quot;", "\"", "&#39;", "'", "&nbsp;", " ",
+		"&#xA;", "\n", "&#xa;", "\n",
+	)
+	text = r.Replace(text)
+	// Collapse multiple whitespace into single spaces
+	text = regexp.MustCompile(`\s+`).ReplaceAllString(text, " ")
+	return strings.TrimSpace(text)
 }
 
 // fetchGNews queries the GNews search API and returns a slice of NewsItems.
@@ -156,10 +176,14 @@ func fetchRSSFeed(ctx context.Context, feedURL string) ([]models.NewsItem, error
 			// Try RFC1123Z as fallback
 			pubAt, _ = time.Parse(time.RFC1123Z, item.PubDate)
 		}
+		desc := item.Description
+		if item.ContentEncoded != "" {
+			desc = stripHTMLTags(item.ContentEncoded)
+		}
 		items = append(items, models.NewsItem{
 			Title:       item.Title,
 			URL:         item.Link,
-			Description: item.Description,
+			Description: desc,
 			Source:      channelTitle,
 			PublishedAt: pubAt,
 		})

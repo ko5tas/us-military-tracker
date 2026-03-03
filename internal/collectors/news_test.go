@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/ko5tas/us-military-tracker/internal/models"
@@ -376,5 +377,70 @@ func TestTagFleetNews(t *testing.T) {
 	}
 	if items[3].Tag != "" {
 		t.Errorf("item[3] (budget) should not be tagged, got %q", items[3].Tag)
+	}
+}
+
+func TestStripHTMLTags(t *testing.T) {
+	tests := []struct {
+		name  string
+		input string
+		want  string
+	}{
+		{"simple tags", "<p>Hello <b>world</b></p>", "Hello world"},
+		{"entities", "AT&amp;T &lt;test&gt; &quot;quoted&quot;", "AT&T <test> \"quoted\""},
+		{"nested", "<div><p>USS <em>Lincoln</em> (CVN-72) in <a href='#'>Arabian Sea</a></p></div>", "USS Lincoln (CVN-72) in Arabian Sea"},
+		{"whitespace collapse", "<p>Line one</p>  <p>Line two</p>", "Line one Line two"},
+		{"empty", "", ""},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := stripHTMLTags(tt.input)
+			if got != tt.want {
+				t.Errorf("stripHTMLTags(%q) = %q, want %q", tt.input, got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFetchRSSFeedWithContentEncoded(t *testing.T) {
+	rssXML := `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Fleet Tracker</title>
+    <item>
+      <title>USNI Fleet Tracker: Feb 9, 2026</title>
+      <link>https://example.com/fleet-tracker</link>
+      <description>These are the approximate positions of the U.S. Navy's deployed carrier strike groups... truncated</description>
+      <content:encoded><![CDATA[<p>USS <em>George Washington</em> (CVN-73) is in Yokosuka, Japan.</p><p>USS <em>Abraham Lincoln</em> (CVN-72) is operating in the Arabian Sea.</p><p>USS <em>Gerald R. Ford</em> (CVN-78) is in the Eastern Mediterranean.</p>]]></content:encoded>
+      <pubDate>Mon, 09 Feb 2026 16:12:57 +0000</pubDate>
+    </item>
+  </channel>
+</rss>`
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/xml")
+		w.Write([]byte(rssXML))
+	}))
+	defer ts.Close()
+
+	items, err := fetchRSSFeed(context.Background(), ts.URL)
+	if err != nil {
+		t.Fatalf("fetchRSSFeed returned error: %v", err)
+	}
+
+	if len(items) != 1 {
+		t.Fatalf("expected 1 item, got %d", len(items))
+	}
+
+	// Should use content:encoded (full text) instead of truncated description
+	desc := items[0].Description
+	if !strings.Contains(desc, "Abraham Lincoln") {
+		t.Errorf("description should contain full content:encoded text with Lincoln, got: %s", desc)
+	}
+	if !strings.Contains(desc, "Arabian Sea") {
+		t.Errorf("description should contain 'Arabian Sea', got: %s", desc)
+	}
+	if strings.Contains(desc, "<p>") || strings.Contains(desc, "<em>") {
+		t.Errorf("description should have HTML tags stripped, got: %s", desc)
 	}
 }
