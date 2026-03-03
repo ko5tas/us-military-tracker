@@ -35,7 +35,7 @@ Collect (parallel) --> AI Council --> Chairman Synthesis --> Generate KML --> Pu
 
 **Data collection:** Four collectors run in parallel every 15 minutes via GitHub Actions, pulling from free public APIs.
 
-**AI enrichment:** An [LLM Council](https://github.com/karpathy/llm-council) (Gemini, Groq, Mistral, DeepSeek, local Ollama) independently analyzes the raw data. A chairman model synthesizes their analyses into the final intelligence layer. The chairman is selected automatically based on quality scores from an offline evaluation pipeline.
+**AI enrichment:** An [LLM Council](https://github.com/karpathy/llm-council) (Gemini, Groq, Mistral, DeepSeek, OpenRouter, ChatGPT, Claude, local Ollama) independently analyzes the raw data. A chairman model synthesizes their analyses into the final intelligence layer with a fallback chain to prevent single-provider outages from losing enrichment. The chairman is selected automatically based on quality scores from an offline evaluation pipeline.
 
 **Self-evolution:** The system monitors AI provider changes (rate limits, new models, outages) and GitHub platform changes (runner specs, free tier limits) weekly, adapting automatically.
 
@@ -47,7 +47,7 @@ us-military-tracker/
 ├── internal/
 │   ├── collectors/       # Aircraft, vessels, events, news collectors
 │   ├── enrichment/       # AI council, chairman, evaluator
-│   │   └── providers/    # Gemini, Groq, Mistral, DeepSeek, OpenRouter, Ollama
+│   │   └── providers/    # Gemini, Groq, Mistral, DeepSeek, OpenRouter, ChatGPT, Claude, Ollama
 │   ├── kml/              # KML/XML generation
 │   ├── models/           # Shared data types
 │   └── platform/         # GitHub monitoring, model evolution
@@ -72,8 +72,8 @@ us-military-tracker/
 - **Language:** Go
 - **Compute:** GitHub Actions (ubuntu-latest, 4 vCPU, 16 GB RAM)
 - **Hosting:** GitHub Pages
-- **AI:** Gemini, Groq, Mistral, DeepSeek, OpenRouter (free tiers) + local Ollama (Qwen 2.5 1.5B)
-- **Budget:** $0/month
+- **AI:** Gemini, Groq, Mistral, DeepSeek, OpenRouter (free tiers) + ChatGPT, Claude (optional paid) + local Ollama (Qwen 2.5 1.5B)
+- **Budget:** $0/month (core), optional paid providers for higher quality
 
 ## Documentation
 
@@ -90,16 +90,24 @@ go build -o tracker ./cmd/tracker
 Optional environment variables for AI enrichment and additional data sources:
 
 ```
+# Free-tier AI providers
 GEMINI_API_KEY       # Google AI Studio (free)
-GROQ_API_KEY         # Groq console (free)
+GROQ_API_KEY         # Groq console (free, daily token cap)
 MISTRAL_API_KEY      # Mistral platform (free)
 DEEPSEEK_API_KEY     # DeepSeek platform (free credits)
 OPENROUTER_API_KEY   # OpenRouter (free)
+
+# Paid AI providers (optional, for higher quality)
+OPENAI_API_KEY       # OpenAI — gpt-4o-mini
+ANTHROPIC_API_KEY    # Anthropic — claude-haiku-4-5-20251001
+
+# Data sources
 GNEWS_API_KEY        # GNews (free)
 AISSTREAM_API_KEY    # AISStream.io (free, GitHub auth)
+ACLED_API_KEY        # ACLED conflict data (free)
 ```
 
-The tracker works without any keys — aircraft positions and news are collected from unauthenticated public APIs.
+The tracker works without any keys — aircraft positions and news are collected from unauthenticated public APIs. Each AI provider is opt-in: only activated when its key is set.
 
 ## License
 
