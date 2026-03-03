@@ -167,5 +167,5 @@ func NewChatGPT(apiKey string) Completer {
 
 // NewOllama creates a Completer backed by a local Ollama instance.
 func NewOllama() Completer {
-	return newOpenAI("ollama", "http://localhost:11434/v1", "", "qwen2.5:1.5b", 120*time.Second)
+	return newOpenAI("ollama", "http://localhost:11434/v1", "", "qwen2.5:1.5b", 300*time.Second)
 }

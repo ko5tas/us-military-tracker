@@ -45,7 +45,7 @@ Data sources:
 **Chairman fallback chain:** If the selected chairman fails (rate limit, etc.), the system tries other successful council members as chairman, then falls back to parsing individual council responses directly. This prevents a single provider outage from losing all enrichment.
 
 **Four scheduled workflows:**
-- `update-tracker.yml` — every 15 min, main pipeline
+- `update-tracker.yml` — every hour, main pipeline
 - `evaluate-chairman.yml` — after each tracker run, scores chairman quality
 - `update-static-data.yml` — monthly, refreshes bases/registries
 - `evolve-architecture.yml` — weekly, monitors AI providers + GitHub platform

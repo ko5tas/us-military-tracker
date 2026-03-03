@@ -289,7 +289,7 @@ func TestFactoryFunctions(t *testing.T) {
 			wantBaseURL: "http://localhost:11434/v1",
 			wantModel:   "qwen2.5:1.5b",
 			wantHasKey:  false,
-			wantTimeout: 120 * time.Second,
+			wantTimeout: 300 * time.Second,
 		},
 	}
 
