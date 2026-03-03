@@ -425,18 +425,45 @@ func buildDataSummary(data models.CollectedData) string {
 		}
 	}
 
-	// News
+	// News — split into fleet-tagged and general items
 	if len(data.News) > 0 {
-		fmt.Fprintf(&b, "\nNEWS (%d items):\n", len(data.News))
-		limit := len(data.News)
-		if limit > 20 {
-			limit = 20
+		var fleetItems, generalItems []models.NewsItem
+		for _, n := range data.News {
+			if n.Tag == "fleet" {
+				fleetItems = append(fleetItems, n)
+			} else {
+				generalItems = append(generalItems, n)
+			}
 		}
-		for _, n := range data.News[:limit] {
-			fmt.Fprintf(&b, "- %s (Source: %s)\n", n.Title, n.Source)
+
+		if len(fleetItems) > 0 {
+			fmt.Fprintf(&b, "\nFLEET/NAVAL INTELLIGENCE (%d items):\n", len(fleetItems))
+			limit := len(fleetItems)
+			if limit > 10 {
+				limit = 10
+			}
+			for _, n := range fleetItems[:limit] {
+				desc := n.Description
+				if len(desc) > 500 {
+					desc = desc[:500] + "..."
+				}
+				fmt.Fprintf(&b, "- %s (Source: %s)\n  %s\n", n.Title, n.Source, desc)
+			}
 		}
-		if len(data.News) > 20 {
-			fmt.Fprintf(&b, "... and %d more news items\n", len(data.News)-20)
+
+		if len(generalItems) > 0 {
+			fmt.Fprintf(&b, "\nGENERAL MILITARY NEWS (%d items):\n", len(generalItems))
+			limit := len(generalItems)
+			if limit > 15 {
+				limit = 15
+			}
+			for _, n := range generalItems[:limit] {
+				desc := n.Description
+				if len(desc) > 150 {
+					desc = desc[:150] + "..."
+				}
+				fmt.Fprintf(&b, "- %s (Source: %s) %s\n", n.Title, n.Source, desc)
+			}
 		}
 	}
 
@@ -495,7 +522,7 @@ func buildStructuredSystemPrompt() string {
 
 Rules:
 - aircraft_enrichments: Only include the most notable/interesting aircraft (up to 20). Match by hex code from the data.
-- carrier_deployments: Include CURRENT known US Navy carrier strike group positions based on recent news and military reporting. Use approximate coordinates. Include 3-5 carrier groups if known.
+- carrier_deployments: Extract CURRENT US Navy carrier strike group positions from the FLEET/NAVAL INTELLIGENCE section. Use ship names, hull numbers, and geographic descriptions from the news. Convert to approximate lat/lon. Do NOT guess positions — only include carriers explicitly mentioned in the provided data with location information.
 - intelligence_summary: Provide a concise but thorough assessment of overall military posture and activity patterns.
 - Return ONLY the JSON object. No other text before or after.`
 }

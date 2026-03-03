@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/ko5tas/us-military-tracker/internal/models"
 )
 
 func TestFetchGNews(t *testing.T) {
@@ -34,8 +36,9 @@ func TestFetchGNews(t *testing.T) {
 		if q.Get("token") != "test-api-key" {
 			t.Errorf("expected token=test-api-key, got %q", q.Get("token"))
 		}
-		if q.Get("q") != "US military" {
-			t.Errorf("expected q=US military, got %q", q.Get("q"))
+		expectedQ := "\"aircraft carrier\" OR \"carrier strike group\" OR \"navy deployment\" OR \"US military\""
+		if q.Get("q") != expectedQ {
+			t.Errorf("expected q=%q, got %q", expectedQ, q.Get("q"))
 		}
 		if q.Get("lang") != "en" {
 			t.Errorf("expected lang=en, got %q", q.Get("lang"))
@@ -167,13 +170,17 @@ func TestFetchRSSFeedError(t *testing.T) {
 func TestDefaultRSSFeeds(t *testing.T) {
 	feeds := DefaultRSSFeeds()
 
-	if len(feeds) != 2 {
-		t.Fatalf("expected 2 feeds, got %d", len(feeds))
+	if len(feeds) != 6 {
+		t.Fatalf("expected 6 feeds, got %d", len(feeds))
 	}
 
 	expectedFeeds := []string{
 		"https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?max=20&ContentType=1",
 		"https://www.dvidshub.net/rss/news",
+		"https://news.usni.org/feed",
+		"https://news.usni.org/category/fleet-tracker/feed",
+		"https://www.navalnews.com/feed/",
+		"https://www.twz.com/feed",
 	}
 
 	for i, expected := range expectedFeeds {
@@ -338,5 +345,36 @@ func TestCollectNewsFailedFeedContinues(t *testing.T) {
 
 	if items[0].Title != "Good Article" {
 		t.Errorf("item[0].Title: got %q, want %q", items[0].Title, "Good Article")
+	}
+}
+
+func TestTagFleetNews(t *testing.T) {
+	items := []models.NewsItem{
+		{Title: "USS Ford Carrier Strike Group Arrives in Eastern Mediterranean", Description: "The Gerald R. Ford CSG deployed..."},
+		{Title: "Air Force promotes new general", Description: "Ceremony held at Pentagon"},
+		{Title: "Navy destroyer conducts patrol", Description: "USS Benfold operates in Pacific"},
+		{Title: "Budget proposal for 2027", Description: "Congress reviews defense spending"},
+		{Title: "USNI Fleet Tracker: Weekly Update", Description: "CVN-72 Lincoln in Arabian Sea"},
+	}
+
+	tagFleetNews(items)
+
+	// Fleet items should be tagged
+	if items[0].Tag != "fleet" {
+		t.Errorf("item[0] (carrier title) should be tagged fleet, got %q", items[0].Tag)
+	}
+	if items[2].Tag != "fleet" {
+		t.Errorf("item[2] (destroyer/navy) should be tagged fleet, got %q", items[2].Tag)
+	}
+	if items[4].Tag != "fleet" {
+		t.Errorf("item[4] (fleet tracker/CVN) should be tagged fleet, got %q", items[4].Tag)
+	}
+
+	// Non-fleet items should NOT be tagged
+	if items[1].Tag != "" {
+		t.Errorf("item[1] (Air Force promotion) should not be tagged, got %q", items[1].Tag)
+	}
+	if items[3].Tag != "" {
+		t.Errorf("item[3] (budget) should not be tagged, got %q", items[3].Tag)
 	}
 }

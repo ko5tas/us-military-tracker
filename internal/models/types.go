@@ -66,6 +66,7 @@ type NewsItem struct {
 	Source      string    `json:"source"`
 	Lat         float64   `json:"lat,omitempty"`
 	Lon         float64   `json:"lon,omitempty"`
+	Tag         string    `json:"tag,omitempty"`
 	PublishedAt time.Time `json:"published_at"`
 }
 

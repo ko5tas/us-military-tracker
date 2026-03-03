@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 
@@ -24,6 +25,10 @@ var DefaultRSSFeeds = func() []string {
 	return []string{
 		"https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?max=20&ContentType=1",
 		"https://www.dvidshub.net/rss/news",
+		"https://news.usni.org/feed",
+		"https://news.usni.org/category/fleet-tracker/feed",
+		"https://www.navalnews.com/feed/",
+		"https://www.twz.com/feed",
 	}
 }
 
@@ -76,7 +81,7 @@ func fetchGNews(ctx context.Context, apiKey, baseURL string) ([]models.NewsItem,
 
 	q := req.URL.Query()
 	q.Set("token", apiKey)
-	q.Set("q", "US military")
+	q.Set("q", "\"aircraft carrier\" OR \"carrier strike group\" OR \"navy deployment\" OR \"US military\"")
 	q.Set("lang", "en")
 	q.Set("max", "50")
 	req.URL.RawQuery = q.Encode()
@@ -206,5 +211,28 @@ func CollectNews(ctx context.Context, gnewsKey string) ([]models.NewsItem, error
 
 	wg.Wait()
 
+	tagFleetNews(allItems)
+
 	return allItems, nil
+}
+
+// fleetKeywords are terms that indicate a news item is about naval fleet movements.
+var fleetKeywords = []string{
+	"carrier", "strike group", "fleet tracker", "csg", "cvn",
+	"deployment", "deployed", "naval", "navy", "warship",
+	"destroyer", "cruiser", "amphibious", "uss ",
+}
+
+// tagFleetNews scans news items and tags those matching naval/fleet keywords
+// with Tag="fleet" so the AI prompt can prioritize them.
+func tagFleetNews(items []models.NewsItem) {
+	for i := range items {
+		text := strings.ToLower(items[i].Title + " " + items[i].Description)
+		for _, kw := range fleetKeywords {
+			if strings.Contains(text, kw) {
+				items[i].Tag = "fleet"
+				break
+			}
+		}
+	}
 }
