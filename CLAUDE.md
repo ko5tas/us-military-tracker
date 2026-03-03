@@ -19,9 +19,19 @@ go test ./...                  # Run all tests
 
 ## Required Environment Variables
 
-AI providers (set whichever keys you have):
-- `GEMINI_API_KEY`, `GROQ_API_KEY`, `MISTRAL_API_KEY`, `DEEPSEEK_API_KEY`, `OPENROUTER_API_KEY`
-- `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` — optional paid providers (ChatGPT gpt-4o-mini, Claude Haiku)
+AI providers (set whichever keys you have as GitHub Actions secrets):
+
+| Secret Name | Provider | Model | Free Tier |
+|---|---|---|---|
+| `GEMINI_API_KEY` | Google Gemini | gemini-2.0-flash-lite | Yes |
+| `GROQ_API_KEY` | Groq | llama-3.3-70b-versatile | Yes (daily token cap) |
+| `MISTRAL_API_KEY` | Mistral | mistral-small-latest | Yes |
+| `DEEPSEEK_API_KEY` | DeepSeek | deepseek-chat | Free credits |
+| `OPENROUTER_API_KEY` | OpenRouter | llama-3.3-70b-instruct:free | Yes |
+| `OPENAI_API_KEY` | OpenAI ChatGPT | gpt-4o-mini | No ($5 trial credits) |
+| `ANTHROPIC_API_KEY` | Anthropic Claude | claude-haiku-4-5-20251001 | No (trial credits) |
+
+Local model (always available, zero cost): **Ollama** running **Qwen 2.5 1.5B** on the GitHub runner's CPU. Installed automatically by the workflow.
 
 Data sources:
 - `AISSTREAM_API_KEY` — vessel tracking (free via GitHub auth at aisstream.io)
@@ -30,7 +40,9 @@ Data sources:
 
 ## Architecture
 
-**Pipeline:** Collect (parallel) → AI Council → Chairman Synthesis → Generate KML → Publish
+**Pipeline:** Collect (parallel) → AI Council → Chairman Synthesis (with fallback chain) → Generate KML → Publish
+
+**Chairman fallback chain:** If the selected chairman fails (rate limit, etc.), the system tries other successful council members as chairman, then falls back to parsing individual council responses directly. This prevents a single provider outage from losing all enrichment.
 
 **Four scheduled workflows:**
 - `update-tracker.yml` — every 15 min, main pipeline
@@ -38,7 +50,7 @@ Data sources:
 - `update-static-data.yml` — monthly, refreshes bases/registries
 - `evolve-architecture.yml` — weekly, monitors AI providers + GitHub platform
 
-**AI Council (LLM Council pattern):** Multiple AI providers analyze data in parallel. A dynamically selected chairman synthesizes the consensus. Offline evaluation scores chairman quality using the local Ollama model (zero API cost).
+**AI Council (LLM Council pattern):** Multiple AI providers analyze data in parallel. A dynamically selected chairman synthesizes the consensus. Offline evaluation scores chairman quality using the local Ollama model (zero API cost). Council exchange format is JSON — chosen over YAML/TOON/TSV for parsing reliability across models of all sizes (especially the 1.5B local model).
 
 **Self-evolving:** Weekly workflow discovers new models, shadow-tests candidates for 3 weeks, and promotes them if they outperform current members. Also monitors GitHub runner specs and adapts.
 
