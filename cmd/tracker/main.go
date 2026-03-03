@@ -611,7 +611,8 @@ func mergeAircraftEnrichments(data *models.CollectedData, enrichments []aircraft
 }
 
 // addVesselDeployments converts AI-identified vessel deployments into Vessel
-// entries and appends them to the collected data.
+// entries. If a vessel with a matching name already exists (e.g. from AIS),
+// the AI metadata is merged into the existing entry instead of creating a duplicate.
 func addVesselDeployments(data *models.CollectedData, deployments []vesselDeployment) {
 	for _, d := range deployments {
 		if d.Name == "" {
@@ -629,6 +630,16 @@ func addVesselDeployments(data *models.CollectedData, deployments []vesselDeploy
 		if vesselType == "" {
 			vesselType = "warship"
 		}
+
+		// Check if a vessel with this name already exists (e.g. from AIS)
+		if idx := findVesselByName(data.Vessels, d.Name); idx >= 0 {
+			// Merge AI metadata into existing AIS vessel — keep real AIS position/speed
+			data.Vessels[idx].Type = vesselType
+			data.Vessels[idx].Class = status
+			continue
+		}
+
+		// No AIS match — add as new vessel
 		vessel := models.Vessel{
 			Name:   d.Name,
 			Type:   vesselType,
@@ -640,6 +651,19 @@ func addVesselDeployments(data *models.CollectedData, deployments []vesselDeploy
 		}
 		data.Vessels = append(data.Vessels, vessel)
 	}
+}
+
+// findVesselByName returns the index of a vessel whose name matches the given
+// name (case-insensitive substring match in either direction), or -1 if not found.
+func findVesselByName(vessels []models.Vessel, name string) int {
+	nameLower := strings.ToLower(name)
+	for i, v := range vessels {
+		vLower := strings.ToLower(v.Name)
+		if strings.Contains(nameLower, vLower) || strings.Contains(vLower, nameLower) {
+			return i
+		}
+	}
+	return -1
 }
 
 // saveJSON marshals v as indented JSON and writes it to the given path.

@@ -237,6 +237,14 @@ func CollectNews(ctx context.Context, gnewsKey string) ([]models.NewsItem, error
 
 	tagFleetNews(allItems)
 
+	fleetCount := 0
+	for _, item := range allItems {
+		if item.Tag == "fleet" {
+			fleetCount++
+		}
+	}
+	log.Printf("News: %d items (%d fleet-tagged)", len(allItems), fleetCount)
+
 	return allItems, nil
 }
 
