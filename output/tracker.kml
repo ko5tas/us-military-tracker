@@ -2,7 +2,7 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>US Military Tracker</name>
-    <description>Generated: 2026-03-22T01:39:30Z | Chairman: ollama | Score: 0.00</description>
+    <description>Generated: 2026-03-22T03:10:38Z | Chairman: groq | Score: 0.00</description>
     <Style id="usaf">
       <IconStyle>
         <color>ff00aa00</color>
@@ -134,173 +134,107 @@
       </LabelStyle>
     </Style>
     <Folder>
-      <name>Aircraft (111 tracked)</name>
+      <name>Aircraft (86 tracked)</name>
+      <Folder>
+        <name>USN</name>
+        <Placemark>
+          <name>BLKT46 (P-8A Poseidon)</name>
+          <styleUrl>#usn</styleUrl>
+          <description>Type: P-8A Poseidon&#xA;Callsign: BLKT46&#xA;Hex: 7cf9cb&#xA;Branch: USN&#xA;Mission: patrol&#xA;Altitude: 25000 ft&#xA;Speed: 457.0 kts&#xA;Heading: 162.8&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>136.987396,-31.62973,25000</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
+      <Folder>
+        <name>USAF</name>
+        <Placemark>
+          <name>RCH338 (C-17 Globemaster III)</name>
+          <styleUrl>#usaf</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH338&#xA;Hex: ae08e3&#xA;Branch: USAF&#xA;Mission: transport&#xA;Altitude: 32000 ft&#xA;Speed: 423.2 kts&#xA;Heading: 312.7&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>4.844208,51.91571,32000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>MAGIC66 (BE20)</name>
+          <styleUrl>#usaf</styleUrl>
+          <description>Type: BE20&#xA;Callsign: MAGIC66&#xA;Hex: ae0f92&#xA;Branch: USAF&#xA;Mission: ISR&#xA;Altitude: 20000 ft&#xA;Speed: 188.9 kts&#xA;Heading: 223.1&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>140.223044,38.893478,20000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH118 (C-17 Globemaster III)</name>
+          <styleUrl>#usaf</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH118&#xA;Hex: ae20c3&#xA;Branch: USAF&#xA;Mission: transport&#xA;Altitude: 31000 ft&#xA;Speed: 446.8 kts&#xA;Heading: 116.7&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>4.064,52.195393,31000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH649 (C-17 Globemaster III)</name>
+          <styleUrl>#usaf</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH649&#xA;Hex: ae49c6&#xA;Branch: USAF&#xA;Mission: transport&#xA;Altitude: 17875 ft&#xA;Speed: 349.0 kts&#xA;Heading: 273.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-75.792669,39.977012,17875</coordinates>
+          </Point>
+        </Placemark>
+      </Folder>
       <Folder>
         <name>Unknown</name>
         <Placemark>
-          <name>GH71 (H-60 Black Hawk)</name>
+          <name>adfa29 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: GH71&#xA;Hex: ae2793&#xA;Altitude: 225 ft&#xA;Speed: 90.0 kts&#xA;Heading: 271.3&#xA;Source: adsb.one</description>
+          <description>Type: Unknown Type&#xA;Hex: adfa29&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>-117.647699,32.697281,225</coordinates>
+            <coordinates>0,0,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
           <name>TEST1234 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbde&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbe3&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
           <Point>
             <coordinates>0,0,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>TEST1234 (TWR)</name>
+          <name>ae5bc5 (B762)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: TWR&#xA;Callsign: TEST1234&#xA;Hex: adfbdd&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <description>Type: B762&#xA;Hex: ae5bc5&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
           <Point>
             <coordinates>0,0,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>ae5f9d (B762)</name>
+          <name>ae5e0f (B762)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: B762&#xA;Hex: ae5f9d&#xA;Altitude: 8325 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <description>Type: B762&#xA;Hex: ae5e0f&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
           <Point>
-            <coordinates>0,0,8325</coordinates>
+            <coordinates>-82.52292,27.844312,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>ae04ce (KC-135 Stratotanker)</name>
+          <name>MTL160 (C-295)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: KC-135 Stratotanker&#xA;Hex: ae04ce&#xA;Altitude: 12925 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <description>Type: C-295&#xA;Callsign: MTL160&#xA;Hex: 880405&#xA;Altitude: 12025 ft&#xA;Speed: 154.0 kts&#xA;Heading: 167.3&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>0,0,12925</coordinates>
+            <coordinates>0,0,12025</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>PAF5157 (C-130 Hercules)</name>
+          <name>N374YJ (DA40)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-130 Hercules&#xA;Callsign: PAF5157&#xA;Hex: 7586c9&#xA;Altitude: 16900 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <description>Type: DA40&#xA;Callsign: N374YJ&#xA;Hex: a444d6&#xA;Altitude: 1800 ft&#xA;Speed: 106.3 kts&#xA;Heading: 348.1&#xA;Source: adsb.lol</description>
           <Point>
-            <coordinates>0,0,16900</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>N99273 (C172)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C172&#xA;Callsign: N99273&#xA;Hex: addd7a&#xA;Altitude: 1175 ft&#xA;Speed: 76.0 kts&#xA;Heading: 350.9&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>-76.207322,39.5858,1175</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SPR106 (DH8A)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: DH8A&#xA;Callsign: SPR106&#xA;Hex: c05325&#xA;Altitude: 21000 ft&#xA;Speed: 194.0 kts&#xA;Heading: 39.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>1.386055,50.976773,21000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>COOL15 (T-38 Talon)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: T-38 Talon&#xA;Callsign: COOL15&#xA;Hex: adffd6&#xA;Altitude: 3100 ft&#xA;Speed: 269.3 kts&#xA;Heading: 78.7&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-97.426428,33.233047,3100</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SUMIT16 (C-130 Hercules)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-130 Hercules&#xA;Callsign: SUMIT16&#xA;Hex: adfddd&#xA;Altitude: 22000 ft&#xA;Speed: 255.1 kts&#xA;Heading: 258.5&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-93.692322,41.105209,22000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae04ed (KC-135 Stratotanker)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: KC-135 Stratotanker&#xA;Hex: ae04ed&#xA;Altitude: 19625 ft&#xA;Speed: 384.1 kts&#xA;Heading: 253.4&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>25.98012,44.288123,19625</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>00000000 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: 00000000&#xA;Hex: adf8ce&#xA;Altitude: 70000 ft&#xA;Speed: 0.7 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,70000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SHARK40 (C30J)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C30J&#xA;Callsign: SHARK40&#xA;Hex: ae1bed&#xA;Altitude: 28000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,28000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>GAFTT18 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: GAFTT18&#xA;Hex: 3ea3bb&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,62700</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SGE63 (R66)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: R66&#xA;Callsign: SGE63&#xA;Hex: a71fec&#xA;Altitude: 1950 ft&#xA;Speed: 98.1 kts&#xA;Heading: 357.1&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>-85.221486,30.943771,1950</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>36740d (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: 36740d&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SCRCH56 (V-22 Osprey)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: V-22 Osprey&#xA;Callsign: SCRCH56&#xA;Hex: ae6baf&#xA;Altitude: 8700 ft&#xA;Speed: 244.2 kts&#xA;Heading: 259.4&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-116.574939,32.620148,8700</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>CFC2930 (C30J)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C30J&#xA;Callsign: CFC2930&#xA;Hex: c2b55d&#xA;Altitude: 26000 ft&#xA;Speed: 308.3 kts&#xA;Heading: 308.3&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>3.459516,52.603796,26000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>325 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: 325&#xA;Hex: 80078f&#xA;Altitude: 21650 ft&#xA;Speed: 418.7 kts&#xA;Heading: 25.2&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>77.022885,31.368027,21650</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>c36e85 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: c36e85&#xA;Altitude: 15500 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,15500</coordinates>
+            <coordinates>139.36821,35.650406,1800</coordinates>
           </Point>
         </Placemark>
         <Placemark>
           <name>TEST1234 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf998&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf996&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
           <Point>
             <coordinates>0,0,0</coordinates>
           </Point>
@@ -314,371 +248,19 @@
           </Point>
         </Placemark>
         <Placemark>
-          <name>HRCLS63 (C30J)</name>
+          <name>KCN801 (FA8X)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: C30J&#xA;Callsign: HRCLS63&#xA;Hex: ae6c15&#xA;Altitude: 4450 ft&#xA;Speed: 257.8 kts&#xA;Heading: 346.8&#xA;Source: adsb.one</description>
+          <description>Type: FA8X&#xA;Callsign: KCN801&#xA;Hex: 8a09e2&#xA;Altitude: 24125 ft&#xA;Speed: 372.5 kts&#xA;Heading: 282.2&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>-120.944778,46.112878,4450</coordinates>
+            <coordinates>110.525254,-7.113647,24125</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>RCH302 (C-17 Globemaster III)</name>
+          <name>GAFTT18 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH302&#xA;Hex: ae0800&#xA;Altitude: 17925 ft&#xA;Speed: 375.3 kts&#xA;Heading: 92.1&#xA;Source: adsb.one</description>
+          <description>Type: Unknown Type&#xA;Callsign: GAFTT18&#xA;Hex: 3ea3bb&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>-105.335961,31.958204,17925</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae68ba (D328)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: D328&#xA;Hex: ae68ba&#xA;Altitude: 8375 ft&#xA;Speed: 203.0 kts&#xA;Heading: 193.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-79.738205,40.841351,8375</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf993&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>GAFTT15 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: GAFTT15&#xA;Hex: 3ea3b8&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>00000000 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: 00000000&#xA;Hex: adfb1a&#xA;Altitude: 80000 ft&#xA;Speed: 0.7 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,80000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae053e (C-5M Super Galaxy)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-5M Super Galaxy&#xA;Hex: ae053e&#xA;Altitude: 38000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,38000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>3f66c8 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: 3f66c8&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH122 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH122&#xA;Hex: ae1467&#xA;Altitude: 34000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 83.8&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-28.75,51.0167,34000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf997&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbdf&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>adf7e3 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: adf7e3&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf991&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH118 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH118&#xA;Hex: ae20c3&#xA;Altitude: 31000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 88.5&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-17.1833,56.0333,31000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>C6567 (AS65)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: AS65&#xA;Callsign: C6567&#xA;Hex: ae2699&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-122.389442,37.632515,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ROCKY22 (V-22 Osprey)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: V-22 Osprey&#xA;Callsign: ROCKY22&#xA;Hex: ae57d8&#xA;Altitude: 100 ft&#xA;Speed: 27.8 kts&#xA;Heading: 329.7&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-118.272382,32.288681,100</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ROCKY23 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: ROCKY23&#xA;Hex: ae4e69&#xA;Altitude: 1150 ft&#xA;Speed: 106.0 kts&#xA;Heading: 320.9&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-118.228697,32.235423,1150</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>HEART58 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: HEART58&#xA;Hex: ae6da2&#xA;Altitude: 4000 ft&#xA;Speed: 86.2 kts&#xA;Heading: 322.1&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-79.000126,40.691823,4000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>G9426581 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: G9426581&#xA;Hex: ae0a3f&#xA;Altitude: 2400 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,2400</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>adfb0f (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: adfb0f&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: 40000b&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>MMF35 (A332)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: A332&#xA;Callsign: MMF35&#xA;Hex: 480c40&#xA;Altitude: 0 ft&#xA;Speed: 15.5 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-157.94572,21.307732,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>adf8c3 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: adf8c3&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae1dd6 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Hex: ae1dd6&#xA;Altitude: 100 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,100</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: 40001c&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>K104 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: K104&#xA;Hex: 800797&#xA;Altitude: 3950 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,3950</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>45753a (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: 45753a&#xA;Altitude: 26375 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,26375</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>302 (IL76)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: IL76&#xA;Callsign: 302&#xA;Hex: 8002dc&#xA;Altitude: 11050 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,11050</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH745 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH745&#xA;Hex: ae145e&#xA;Altitude: 36000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 272.4&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-17.0333,56.0333,36000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH898 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH898&#xA;Hex: ae2fb0&#xA;Altitude: 34000 ft&#xA;Speed: 373.0 kts&#xA;Heading: 270.8&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-11.628685,56.022499,34000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>MOOSE89 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: MOOSE89&#xA;Hex: ae07d3&#xA;Altitude: 36000 ft&#xA;Speed: 488.0 kts&#xA;Heading: 289.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>13.851569,49.857318,36000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH172 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH172&#xA;Hex: ae07f3&#xA;Altitude: 35000 ft&#xA;Speed: 429.0 kts&#xA;Heading: 109.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>15.218533,49.224136,35000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae5bc5 (B762)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: B762&#xA;Hex: ae5bc5&#xA;Altitude: 20000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,20000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf995&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TXLU03 (A139)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: A139&#xA;Callsign: TXLU03&#xA;Hex: 4ca331&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf996&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae749b (P-8A Poseidon)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: P-8A Poseidon&#xA;Hex: ae749b&#xA;Altitude: 4700 ft&#xA;Speed: 145.1 kts&#xA;Heading: 246.4&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-117.458989,47.672005,4700</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae4bba (H53S)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H53S&#xA;Hex: ae4bba&#xA;Altitude: 1025 ft&#xA;Speed: 114.8 kts&#xA;Heading: 192.6&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-74.424133,39.837982,1025</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH270 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH270&#xA;Hex: ae07f4&#xA;Altitude: 30000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 290.5&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-19.3167,56.8833,30000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH816 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH816&#xA;Hex: ae119b&#xA;Altitude: 35000 ft&#xA;Speed: 462.0 kts&#xA;Heading: 110.4&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-1.106338,53.442656,35000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae0a32 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Hex: ae0a32&#xA;Altitude: 0 ft&#xA;Speed: 66.0 kts&#xA;Heading: 215.1&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>adfa19 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: adfa19&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae014e (KC-135 Stratotanker)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: KC-135 Stratotanker&#xA;Hex: ae014e&#xA;Altitude: 22000 ft&#xA;Speed: 434.0 kts&#xA;Heading: 104.4&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,22000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>c3bc8c (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: c3bc8c&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SW11 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: SW11&#xA;Hex: ae4f20&#xA;Altitude: 75 ft&#xA;Speed: 62.4 kts&#xA;Heading: 21.6&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-118.269635,32.301682,75</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH259 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH259&#xA;Hex: ae20c8&#xA;Altitude: 33000 ft&#xA;Speed: 446.6 kts&#xA;Heading: 127.4&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-8.677185,59.598129,33000</coordinates>
+            <coordinates>0,0,62700</coordinates>
           </Point>
         </Placemark>
         <Placemark>
@@ -690,265 +272,25 @@
           </Point>
         </Placemark>
         <Placemark>
-          <name>791369 (IL76)</name>
+          <name>GAFTT15 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: IL76&#xA;Hex: 791369&#xA;Altitude: 14100 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,14100</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>COOL33 (T-38 Talon)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: T-38 Talon&#xA;Callsign: COOL33&#xA;Hex: adffe0&#xA;Altitude: 4175 ft&#xA;Speed: 300.9 kts&#xA;Heading: 355.6&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-97.521935,32.910058,4175</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>G23921 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: G23921&#xA;Hex: ae0e0b&#xA;Altitude: 900 ft&#xA;Speed: 98.9 kts&#xA;Heading: 335.5&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-82.32362,28.21669,900</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>SAM542 (GLF5)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: GLF5&#xA;Callsign: SAM542&#xA;Hex: ae6962&#xA;Altitude: 41000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>-65.73313,45.577214,41000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>WOLF06 (A332)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: A332&#xA;Callsign: WOLF06&#xA;Hex: 896c3c&#xA;Altitude: 21000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,21000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae4f47 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Hex: ae4f47&#xA;Altitude: 50 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,50</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH709 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH709&#xA;Hex: ae08cf&#xA;Altitude: 35000 ft&#xA;Speed: 446.0 kts&#xA;Heading: 111.3&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0.570055,53.038558,35000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>KNG53 (B350)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: B350&#xA;Callsign: KNG53&#xA;Hex: c87f39&#xA;Altitude: 725 ft&#xA;Speed: 203.0 kts&#xA;Heading: 109.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>175.41128,-36.456407,725</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbe0&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae53a4 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Hex: ae53a4&#xA;Altitude: 725 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,725</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>N144UA (DA40)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: DA40&#xA;Callsign: N144UA&#xA;Hex: a0b34f&#xA;Altitude: 4225 ft&#xA;Speed: 68.0 kts&#xA;Heading: 270.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>139.025574,35.610123,4225</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>445566 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: 445566&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>BRS01 (A319)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: A319&#xA;Callsign: BRS01&#xA;Hex: e400d9&#xA;Altitude: 37025 ft&#xA;Speed: 442.8 kts&#xA;Heading: 126.9&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-55.522108,-10.363738,37025</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH1801 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH1801&#xA;Hex: ae1453&#xA;Altitude: 34000 ft&#xA;Speed: 487.0 kts&#xA;Heading: 291.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>6.663415,52.193374,34000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>LKY01 (C-130 Hercules)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-130 Hercules&#xA;Callsign: LKY01&#xA;Hex: 881b65&#xA;Altitude: 13200 ft&#xA;Speed: 297.8 kts&#xA;Heading: 194.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>100.049455,12.759503,13200</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH537 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH537&#xA;Hex: ae20c7&#xA;Altitude: 33000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,33000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>adfaed (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Hex: adfaed&#xA;Altitude: 80000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,80000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf994&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>GAFTT33 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: GAFTT33&#xA;Hex: 3ea3c3&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
+          <description>Type: Unknown Type&#xA;Callsign: GAFTT15&#xA;Hex: 3ea3b8&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
             <coordinates>0,0,62700</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae145d (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Hex: ae145d&#xA;Altitude: 35000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,35000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>KCN801 (FA8X)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: FA8X&#xA;Callsign: KCN801&#xA;Hex: 8a09e2&#xA;Altitude: 27000 ft&#xA;Speed: 431.1 kts&#xA;Heading: 101.1&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>108.413412,-6.746887,27000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TORI11 (BE20)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: BE20&#xA;Callsign: TORI11&#xA;Hex: ae4a79&#xA;Altitude: 20000 ft&#xA;Speed: 261.8 kts&#xA;Heading: 347.9&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>129.238415,34.702086,20000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>G20526 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: G20526&#xA;Hex: ae5679&#xA;Altitude: 1950 ft&#xA;Speed: 99.3 kts&#xA;Heading: 117.6&#xA;Source: airplanes.live</description>
-          <Point>
-            <coordinates>-85.039542,42.913668,1950</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH1826 (C-17 Globemaster III)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH1826&#xA;Hex: ae2fa7&#xA;Altitude: 31000 ft&#xA;Speed: 423.0 kts&#xA;Heading: 136.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>17.864109,48.402419,31000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae047a (KC-135 Stratotanker)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: KC-135 Stratotanker&#xA;Hex: ae047a&#xA;Altitude: 13300 ft&#xA;Speed: 338.7 kts&#xA;Heading: 198.1&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>26.352718,44.407111,13300</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RRR9964 (A332)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: A332&#xA;Callsign: RRR9964&#xA;Hex: 43c6f6&#xA;Altitude: 27000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,27000</coordinates>
           </Point>
         </Placemark>
         <Placemark>
           <name>BGST417 (BE20)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: BE20&#xA;Callsign: BGST417&#xA;Hex: af384c&#xA;Altitude: 13975 ft&#xA;Speed: 228.5 kts&#xA;Heading: 194.7&#xA;Source: adsb.one</description>
+          <description>Type: BE20&#xA;Callsign: BGST417&#xA;Hex: af384c&#xA;Altitude: 2950 ft&#xA;Speed: 173.0 kts&#xA;Heading: 316.0&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>-97.161924,27.932134,13975</coordinates>
+            <coordinates>-97.607201,27.722122,2950</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>BLITZ56 (H-60 Black Hawk)</name>
+          <name>ae053e (C-5M Super Galaxy)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: BLITZ56&#xA;Hex: ae0b0a&#xA;Altitude: 2125 ft&#xA;Speed: 116.0 kts&#xA;Heading: 47.4&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>-79.674537,39.972545,2125</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TROJ36 (C-130 Hercules)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-130 Hercules&#xA;Callsign: TROJ36&#xA;Hex: 7cf839&#xA;Altitude: 27000 ft&#xA;Speed: 335.2 kts&#xA;Heading: 142.5&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>137.288652,-20.852144,27000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf992&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>GAFTT07 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: GAFTT07&#xA;Hex: 3ea3b0&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,62700</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>TEST1234 (Unknown Type)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbe3&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
-          <Point>
-            <coordinates>0,0,0</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae0cd5 (H-60 Black Hawk)</name>
-          <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Hex: ae0cd5&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <description>Type: C-5M Super Galaxy&#xA;Hex: ae053e&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
             <coordinates>0,0,0</coordinates>
           </Point>
@@ -962,27 +304,315 @@
           </Point>
         </Placemark>
         <Placemark>
-          <name>ICY12 (H-60 Black Hawk)</name>
+          <name>ae1dd6 (H-60 Black Hawk)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: ICY12&#xA;Hex: ae0bce&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <description>Type: H-60 Black Hawk&#xA;Hex: ae1dd6&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>-149.617335,61.323845,0</coordinates>
+            <coordinates>0,0,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>E85921 (C30J)</name>
+          <name>SPR106 (DH8A)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: C30J&#xA;Callsign: E85921&#xA;Hex: ae6919&#xA;Altitude: 19000 ft&#xA;Speed: 335.3 kts&#xA;Heading: 109.5&#xA;Source: adsb.one</description>
+          <description>Type: DH8A&#xA;Callsign: SPR106&#xA;Hex: c05325&#xA;Altitude: 21000 ft&#xA;Speed: 249.0 kts&#xA;Heading: 193.0&#xA;Source: adsb.lol</description>
           <Point>
-            <coordinates>-103.831733,31.215546,19000</coordinates>
+            <coordinates>1.204621,50.732453,21000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>BLITZ56 (H-60 Black Hawk)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: H-60 Black Hawk&#xA;Callsign: BLITZ56&#xA;Hex: ae0b0a&#xA;Altitude: 3650 ft&#xA;Speed: 123.4 kts&#xA;Heading: 56.6&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-79.107305,40.161174,3650</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>478125 (EH10)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: EH10&#xA;Hex: 478125&#xA;Altitude: 2900 ft&#xA;Speed: 123.0 kts&#xA;Heading: 323.6&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>10.439575,59.610718,2900</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: 40000b&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf994&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>ae47f3 (H-60 Black Hawk)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: H-60 Black Hawk&#xA;Hex: ae47f3&#xA;Altitude: 6025 ft&#xA;Speed: 76.7 kts&#xA;Heading: 15.1&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,6025</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RRR9964 (A332)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: A332&#xA;Callsign: RRR9964&#xA;Hex: 43c6f6&#xA;Altitude: 27000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,27000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>ae8a94 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Hex: ae8a94&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>SMOKEY2 (H-60 Black Hawk)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: H-60 Black Hawk&#xA;Callsign: SMOKEY2&#xA;Hex: ae212b&#xA;Altitude: 2500 ft&#xA;Speed: 152.4 kts&#xA;Heading: 38.1&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-84.281149,35.726748,2500</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH219 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH219&#xA;Hex: ae1173&#xA;Altitude: 34000 ft&#xA;Speed: 413.8 kts&#xA;Heading: 266.4&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-81.929081,38.341827,34000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH745 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH745&#xA;Hex: ae145e&#xA;Altitude: 36000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 273.1&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-33.3667,57.0833,36000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TROJ35 (C30J)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C30J&#xA;Callsign: TROJ35&#xA;Hex: 7cf838&#xA;Altitude: 25000 ft&#xA;Speed: 320.5 kts&#xA;Heading: 100.6&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>141.063255,-19.635175,25000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>ICY12 (H-60 Black Hawk)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: H-60 Black Hawk&#xA;Callsign: ICY12&#xA;Hex: ae0bce&#xA;Altitude: 400 ft&#xA;Speed: 69.9 kts&#xA;Heading: 33.9&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-149.600728,61.380662,400</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH259 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH259&#xA;Hex: ae20c8&#xA;Altitude: 34850 ft&#xA;Speed: 474.6 kts&#xA;Heading: 168.4&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>6.164147,51.841919,34850</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: 40003e&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TREK131 (C30J)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C30J&#xA;Callsign: TREK131&#xA;Hex: ae5c96&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf993&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
           <name>PAWS11 (TEX2)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: TEX2&#xA;Callsign: PAWS11&#xA;Hex: ae1750&#xA;Altitude: 6075 ft&#xA;Speed: 225.3 kts&#xA;Heading: 177.2&#xA;Source: adsb.one</description>
+          <description>Type: TEX2&#xA;Callsign: PAWS11&#xA;Hex: ae1750&#xA;Altitude: 2950 ft&#xA;Speed: 108.7 kts&#xA;Heading: 169.9&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>-97.301424,32.883011,6075</coordinates>
+            <coordinates>-97.344192,33.118705,2950</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH546 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH546&#xA;Hex: ae4d6a&#xA;Altitude: 33000 ft&#xA;Speed: 503.0 kts&#xA;Heading: 74.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-83.387856,42.583894,33000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>SAVER50 (EH10)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: EH10&#xA;Callsign: SAVER50&#xA;Hex: 478123&#xA;Altitude: 300 ft&#xA;Speed: 60.0 kts&#xA;Heading: 109.5&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>5.942322,58.377438,300</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH1826 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH1826&#xA;Hex: ae2fa7&#xA;Altitude: 35000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,35000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf992&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf995&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>adf7e3 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Hex: adf7e3&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (TWR)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: TWR&#xA;Callsign: TEST1234&#xA;Hex: adfbdd&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH1833 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: RCH1833&#xA;Hex: ae02bc&#xA;Altitude: 35000 ft&#xA;Speed: 489.0 kts&#xA;Heading: 106.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-4.440221,55.296666,35000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>KNG53 (B350)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: B350&#xA;Callsign: KNG53&#xA;Hex: c87f39&#xA;Altitude: 3500 ft&#xA;Speed: 181.9 kts&#xA;Heading: 193.3&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>175.50708,-40.112366,3500</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf991&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbe0&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>C6516 (AS65)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: AS65&#xA;Callsign: C6516&#xA;Hex: ae266a&#xA;Altitude: 475 ft&#xA;Speed: 102.9 kts&#xA;Heading: 235.7&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-80.081982,32.580551,475</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>IDAF02 (B738)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: B738&#xA;Callsign: IDAF02&#xA;Hex: 8a0a01&#xA;Altitude: 37000 ft&#xA;Speed: 441.0 kts&#xA;Heading: 128.7&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>109.12805,-7.717709,37000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TORI11 (BE20)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: BE20&#xA;Callsign: TORI11&#xA;Hex: ae4a79&#xA;Altitude: 21000 ft&#xA;Speed: 316.8 kts&#xA;Heading: 135.8&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>127.718868,36.535721,21000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbdf&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH302 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH302&#xA;Hex: ae0800&#xA;Altitude: 32975 ft&#xA;Speed: 471.1 kts&#xA;Heading: 75.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-92.88169,35.703425,32975</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>UAF2254 (C208)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C208&#xA;Callsign: UAF2254&#xA;Hex: 896c4a&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH206 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH206&#xA;Hex: ae1448&#xA;Altitude: 5625 ft&#xA;Speed: 252.0 kts&#xA;Heading: 8.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-122.094586,38.233304,5625</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH898 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH898&#xA;Hex: ae2fb0&#xA;Altitude: 32000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 282.2&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-25.7333,56.6833,32000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>00000000 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: 00000000&#xA;Hex: adf8ce&#xA;Altitude: 70000 ft&#xA;Speed: 0.7 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,70000</coordinates>
           </Point>
         </Placemark>
         <Placemark>
@@ -996,7 +626,7 @@
         <Placemark>
           <name>TEST1234 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: 40003e&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adf997&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
             <coordinates>0,0,0</coordinates>
           </Point>
@@ -1004,85 +634,229 @@
         <Placemark>
           <name>TEST1234 (Unknown Type)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbe1&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
+          <description>Type: Unknown Type&#xA;Callsign: TEST1234&#xA;Hex: adfbe1&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
             <coordinates>0,0,0</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>G26676 (H-60 Black Hawk)</name>
+          <name>ae07d7 (C-17 Globemaster III)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: H-60 Black Hawk&#xA;Callsign: G26676&#xA;Hex: ae0e43&#xA;Altitude: 2400 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: airplanes.live</description>
+          <description>Type: C-17 Globemaster III&#xA;Hex: ae07d7&#xA;Altitude: 33000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>0,0,2400</coordinates>
+            <coordinates>0,0,33000</coordinates>
           </Point>
         </Placemark>
         <Placemark>
-          <name>RCH334 (C-17 Globemaster III)</name>
+          <name>RCH728 (C-17 Globemaster III)</name>
           <styleUrl>#aircraft</styleUrl>
-          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH334&#xA;Hex: ae2fa3&#xA;Altitude: 31000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH728&#xA;Hex: ae07eb&#xA;Altitude: 14325 ft&#xA;Speed: 372.8 kts&#xA;Heading: 55.2&#xA;Source: adsb.one</description>
           <Point>
-            <coordinates>0,0,31000</coordinates>
+            <coordinates>-73.81189,40.134247,14325</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH172 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH172&#xA;Hex: ae07f3&#xA;Altitude: 35000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>24.304115,41.179237,35000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>GAFTT07 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: GAFTT07&#xA;Hex: 3ea3b0&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,62700</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>e8068f (P-3C Orion)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: P-3C Orion&#xA;Hex: e8068f&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>WOLF06 (A332)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: A332&#xA;Callsign: WOLF06&#xA;Hex: 896c3c&#xA;Altitude: 3675 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,3675</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>ae07ac (KC-135 Stratotanker)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: KC-135 Stratotanker&#xA;Hex: ae07ac&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>ae749b (P-8A Poseidon)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: P-8A Poseidon&#xA;Hex: ae749b&#xA;Altitude: 22000 ft&#xA;Speed: 279.2 kts&#xA;Heading: 284.7&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-119.283846,47.883213,22000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>SW11 (H-60 Black Hawk)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: H-60 Black Hawk&#xA;Callsign: SW11&#xA;Hex: ae4f20&#xA;Altitude: 175 ft&#xA;Speed: 73.2 kts&#xA;Heading: 14.2&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-118.29697,32.440113,175</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>SUMIT16 (C-130 Hercules)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-130 Hercules&#xA;Callsign: SUMIT16&#xA;Hex: adfddd&#xA;Altitude: 22000 ft&#xA;Speed: 249.6 kts&#xA;Heading: 253.2&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-101.948468,39.491043,22000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH271 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH271&#xA;Hex: ae145d&#xA;Altitude: 34975 ft&#xA;Speed: 512.0 kts&#xA;Heading: 97.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-85.12532,41.307525,34975</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>FALCON1 (D228)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: D228&#xA;Callsign: FALCON1&#xA;Hex: 800321&#xA;Altitude: 4925 ft&#xA;Speed: 198.6 kts&#xA;Heading: 262.8&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>76.422982,10.06869,4925</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>N372HB (C172)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C172&#xA;Callsign: N372HB&#xA;Hex: a43bea&#xA;Altitude: 8500 ft&#xA;Speed: 92.4 kts&#xA;Heading: 340.4&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>-104.599218,38.569656,8500</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>RCH270 (C-17 Globemaster III)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-17 Globemaster III&#xA;Callsign: RCH270&#xA;Hex: ae07f4&#xA;Altitude: 30000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 271.8&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-35.55,58.1,30000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>HDSN22 (B350)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: B350&#xA;Callsign: HDSN22&#xA;Hex: 7cfa32&#xA;Altitude: 26000 ft&#xA;Speed: 276.6 kts&#xA;Heading: 192.5&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>151.658397,-31.311722,26000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>adfaed (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Hex: adfaed&#xA;Altitude: 80000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,80000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>GAFTT33 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: GAFTT33&#xA;Hex: 3ea3c3&#xA;Altitude: 62700 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,62700</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TXLU03 (A139)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: A139&#xA;Callsign: TXLU03&#xA;Hex: 4ca331&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>PAF5157 (C-130 Hercules)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C-130 Hercules&#xA;Callsign: PAF5157&#xA;Hex: 7586c9&#xA;Altitude: 7900 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,7900</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>ae0cd5 (H-60 Black Hawk)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: H-60 Black Hawk&#xA;Hex: ae0cd5&#xA;Altitude: 700 ft&#xA;Speed: 55.0 kts&#xA;Heading: 238.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>-149.614402,61.383726,700</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>SHARK40 (C30J)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: C30J&#xA;Callsign: SHARK40&#xA;Hex: ae1bed&#xA;Altitude: 29000 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,29000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>TEST1234 (TWR)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: TWR&#xA;Callsign: TEST1234&#xA;Hex: adfbde&#xA;Altitude: 0 ft&#xA;Speed: 0.0 kts&#xA;Heading: 0.0&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>0,0,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>00000000 (Unknown Type)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: Unknown Type&#xA;Callsign: 00000000&#xA;Hex: adfb1a&#xA;Altitude: 80000 ft&#xA;Speed: 0.7 kts&#xA;Heading: 0.0&#xA;Source: adsb.one</description>
+          <Point>
+            <coordinates>0,0,80000</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>NA064 (M28)</name>
+          <styleUrl>#aircraft</styleUrl>
+          <description>Type: M28&#xA;Callsign: NA064&#xA;Hex: 70a54a&#xA;Altitude: 9475 ft&#xA;Speed: 176.8 kts&#xA;Heading: 95.5&#xA;Source: adsb.lol</description>
+          <Point>
+            <coordinates>83.60632,27.875748,9475</coordinates>
           </Point>
         </Placemark>
       </Folder>
     </Folder>
     <Folder>
-      <name>Vessels (7 tracked)</name>
+      <name>Vessels (3 tracked)</name>
       <Placemark>
-        <name>USNS DAHL           </name>
+        <name>USS CONSTITUTION</name>
         <styleUrl>#vessel</styleUrl>
-        <description>Branch: US Navy&#xA;MMSI: 368700000&#xA;Heading: 118.0&#xA;Source: aisstream.io</description>
+        <description>Branch: US Navy&#xA;MMSI: 369914081&#xA;Source: aisstream.io</description>
         <Point>
-          <coordinates>-74.07375,40.66173,0</coordinates>
+          <coordinates>-71.05678,42.37255,0</coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>USS Enterprise (CVN-76)</name>
+        <name>USS Tripoli (LHA-7)</name>
         <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — The USS Enterprise is currently deployed in the Western Pacific, conducting operations against suspected terrorist threats.&#xA;Type: Aircraft Carrier Strike Group&#xA;Source: ai_intel</description>
+        <description>Branch: USN&#xA;Status: transit — The USS Tripoli is transiting the Malacca Strait en route to the Middle East with the 31st Marine Expeditionary Unit.&#xA;Type: amphibious_ready_group&#xA;Source: ai_intel</description>
         <Point>
-          <coordinates>-117.744458,38.524019,0</coordinates>
+          <coordinates>0,0,0</coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>USS America (LHD-2)</name>
+        <name>USS Comstock (LSD-45)</name>
         <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: in-port — The USS America is currently in the Gulf of Mexico, preparing for amphibious landings.&#xA;Type: amphibious_ready_group&#xA;Source: ai_intel</description>
+        <description>Branch: USN&#xA;Status: deployed — The USS Comstock is part of the Boxer Amphibious Ready Group, which deployed from California with the 11th Marine Expeditionary Unit.&#xA;Type: amphibious_ready_group&#xA;Source: ai_intel</description>
         <Point>
-          <coordinates>-82.298849,34.051769,0</coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>USS Porter (DDG-76)</name>
-        <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — The USS Porter is currently deployed in the Mediterranean Sea, participating in anti-terrorism operations.&#xA;Type: destroyer&#xA;Source: ai_intel</description>
-        <Point>
-          <coordinates>-117.943098,31.259408,0</coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>USS Ticonderoga (CG-52)</name>
-        <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — The USS Ticonderoga is currently deployed in the Persian Gulf, participating in coalition operations.&#xA;Type: cruiser&#xA;Source: ai_intel</description>
-        <Point>
-          <coordinates>-87.709029,34.067491,0</coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>USS John S. McCain (DDG-76)</name>
-        <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — The USS John S. McCain is currently deployed in the Mediterranean Sea, participating in anti-terrorism operations.&#xA;Type: destroyer&#xA;Source: ai_intel</description>
-        <Point>
-          <coordinates>-82.298849,34.051298,0</coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>USS Halsey (DDG-76)</name>
-        <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — The USS Halsey is currently deployed in the Mediterranean Sea, participating in anti-terrorism operations.&#xA;Type: destroyer&#xA;Source: ai_intel</description>
-        <Point>
-          <coordinates>-82.298849,34.051298,0</coordinates>
+          <coordinates>0,0,0</coordinates>
         </Point>
       </Placemark>
     </Folder>
@@ -1766,7 +1540,7 @@
       <Placemark>
         <name>AI Council Assessment</name>
         <styleUrl>#intel</styleUrl>
-        <description>Recent military activities have focused on anti-terrorism efforts and maritime security missions, with U.S. forces operating across multiple regions including the Mediterranean Sea, Persian Gulf, and the Eastern Pacific. The Department of Defense continues to enhance its capabilities through technological advancements in areas such as air refueling and autonomous aircraft training.</description>
+        <description>The current military posture and activity patterns suggest an increased focus on maritime security and amphibious operations. The deployment of the Boxer Amphibious Ready Group and the transit of the USS Tripoli through the Malacca Strait indicate a heightened presence in the Asia-Pacific region. The presence of P-8 and C-17 aircraft in the region also suggests a strong emphasis on Intelligence, Surveillance, and Reconnaissance (ISR) and transport missions. Furthermore, the participation of U.S. forces in exercises such as Cold Response 26 demonstrates a commitment to collective defense and interoperability with NATO allies. Overall, the data suggests a proactive and adaptive military posture, with a focus on maintaining readiness and responding to emerging threats.</description>
         <Point>
           <coordinates>0,0,0</coordinates>
         </Point>
