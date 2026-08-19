@@ -2,7 +2,7 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>US Military Tracker</name>
-    <description>Generated: 2026-08-19T14:36:25Z | Chairman: mistral | Score: 0.00</description>
+    <description>Generated: 2026-08-19T15:34:48Z | Chairman: mistral | Score: 0.00</description>
     <Style id="usaf">
       <IconStyle>
         <color>ff00aa00</color>
@@ -134,59 +134,83 @@
       </LabelStyle>
     </Style>
     <Folder>
-      <name>Aircraft (4 tracked)</name>
+      <name>Aircraft (1 tracked)</name>
       <Folder>
         <name>USAF</name>
         <Placemark>
-          <name>MMF15 (A332)</name>
+          <name>RRR2253 (A332)</name>
           <styleUrl>#usaf</styleUrl>
-          <description>Type: A332&#xA;Callsign: MMF15&#xA;Hex: 480c41&#xA;Branch: USAF&#xA;Mission: transport&#xA;Altitude: 26525 ft&#xA;Speed: 350.6 kts&#xA;Heading: 246.3&#xA;Source: adsb.lol</description>
+          <description>Type: A332&#xA;Callsign: RRR2253&#xA;Hex: 43c6f9&#xA;Branch: USAF&#xA;Mission: ISR&#xA;Altitude: 40000 ft&#xA;Speed: 405.5 kts&#xA;Heading: 303.5&#xA;Source: adsb.lol</description>
           <Point>
-            <coordinates>8.378448,52.273682,26525</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>RCH581 (KC-135 Stratotanker)</name>
-          <styleUrl>#usaf</styleUrl>
-          <description>Type: KC-135 Stratotanker&#xA;Callsign: RCH581&#xA;Hex: ae0383&#xA;Branch: USAF&#xA;Mission: tanker&#xA;Altitude: 27000 ft&#xA;Speed: 498.0 kts&#xA;Heading: 116.2&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,27000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>ae048a (KC-135 Stratotanker)</name>
-          <styleUrl>#usaf</styleUrl>
-          <description>Type: KC-135 Stratotanker&#xA;Hex: ae048a&#xA;Branch: USAF&#xA;Mission: tanker&#xA;Altitude: 36000 ft&#xA;Speed: 376.0 kts&#xA;Heading: 266.0&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>0,0,36000</coordinates>
-          </Point>
-        </Placemark>
-        <Placemark>
-          <name>GNY4524 (Unknown Type)</name>
-          <styleUrl>#usaf</styleUrl>
-          <description>Type: Unknown Type&#xA;Callsign: GNY4524&#xA;Hex: 3ea8b0&#xA;Branch: USAF&#xA;Mission: transport&#xA;Altitude: 24000 ft&#xA;Speed: 319.0 kts&#xA;Heading: 229.1&#xA;Source: adsb.lol</description>
-          <Point>
-            <coordinates>7.506173,52.39594,24000</coordinates>
+            <coordinates>7.319641,51.570476,40000</coordinates>
           </Point>
         </Placemark>
       </Folder>
     </Folder>
     <Folder>
-      <name>Vessels (2 tracked)</name>
+      <name>Vessels (8 tracked)</name>
       <Placemark>
         <name>USS George Washington (CVN-73)</name>
         <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — Nimitz-class aircraft carrier currently transiting the Malacca Strait into the Andaman Sea as part of a carrier strike group deployment, underscoring U.S. commitment to regional deterrence and freedom of navigation.&#xA;Type: Aircraft Carrier Strike Group&#xA;Source: ai_intel</description>
+        <description>Branch: USN&#xA;Status: deployed — Nimitz-class carrier transiting the Strait of Malacca into the Andaman Sea as part of Carrier Strike Group operations, likely supporting regional deterrence and freedom of navigation in the Indo-Pacific.&#xA;Type: Aircraft Carrier Strike Group&#xA;Source: ai_intel</description>
         <Point>
-          <coordinates>99,5.5,0</coordinates>
+          <coordinates>99,12,0</coordinates>
         </Point>
       </Placemark>
       <Placemark>
         <name>USS Benfold (DDG-65)</name>
         <styleUrl>#vessel</styleUrl>
-        <description>Branch: USN&#xA;Status: deployed — Arleigh Burke-class guided missile destroyer operating in the South China Sea after recent repairs in Yokosuka, Japan, and Subic Bay, Philippines, highlighting ongoing operational challenges in maintaining forward presence.&#xA;Type: destroyer&#xA;Source: ai_intel</description>
+        <description>Branch: USN&#xA;Status: deployed — Arleigh Burke-class destroyer operating in the South China Sea after repairs in Subic Bay, Philippines, following an engineering casualty and power loss.&#xA;Type: destroyer&#xA;Source: ai_intel</description>
         <Point>
-          <coordinates>120.9,14.5,0</coordinates>
+          <coordinates>120.9,14.6,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USS Carl Vinson (CVN-70)</name>
+        <styleUrl>#vessel</styleUrl>
+        <description>Branch: USN&#xA;Status: deployed — Nimitz-class carrier operating off the U.S. West Coast as part of a dual-carrier strike group deployment, likely conducting exercises with allied naval forces in the Pacific.&#xA;Type: Aircraft Carrier Strike Group&#xA;Source: ai_intel</description>
+        <Point>
+          <coordinates>-120.6,34.5,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USS Tripoli (LHA-7)</name>
+        <styleUrl>#vessel</styleUrl>
+        <description>Branch: USN&#xA;Status: deployed — America-class amphibious assault ship conducting operations in the South China Sea, possibly supporting Marine Expeditionary Unit exercises or humanitarian assistance missions.&#xA;Type: amphibious_ready_group&#xA;Source: ai_intel</description>
+        <Point>
+          <coordinates>120.5,13.1,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USS Nimitz (CVN-68)</name>
+        <styleUrl>#vessel</styleUrl>
+        <description>Branch: USN&#xA;Status: deployed — Nimitz-class carrier operating near the Philippines as part of a Pacific Fleet surge, likely participating in joint exercises with regional allies to demonstrate U.S. commitment to maritime security.&#xA;Type: Aircraft Carrier Strike Group&#xA;Source: ai_intel</description>
+        <Point>
+          <coordinates>120.3,14.2,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USS Chancellorsville (CG-62)</name>
+        <styleUrl>#vessel</styleUrl>
+        <description>Branch: USN&#xA;Status: deployed — Ticonderoga-class cruiser operating in the South China Sea, providing air and missile defense support to carrier strike groups and conducting freedom of navigation operations.&#xA;Type: cruiser&#xA;Source: ai_intel</description>
+        <Point>
+          <coordinates>121,12.8,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USS Rafael Peralta (DDG-115)</name>
+        <styleUrl>#vessel</styleUrl>
+        <description>Branch: USN&#xA;Status: deployed — Arleigh Burke-class destroyer patrolling the South China Sea, likely supporting anti-submarine warfare and surface combatant operations in contested waters.&#xA;Type: destroyer&#xA;Source: ai_intel</description>
+        <Point>
+          <coordinates>120.7,14,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USNS Mercy (T-AH-19)</name>
+        <styleUrl>#vessel</styleUrl>
+        <description>Branch: USN&#xA;Status: deployed — Hospital ship conducting medical diplomacy and humanitarian assistance operations in the Philippines, likely as part of U.S. Indo-Pacific Command’s engagement strategy.&#xA;Type: other&#xA;Source: ai_intel</description>
+        <Point>
+          <coordinates>125.6,10.2,0</coordinates>
         </Point>
       </Placemark>
     </Folder>
@@ -870,7 +894,7 @@
       <Placemark>
         <name>AI Council Assessment</name>
         <styleUrl>#intel</styleUrl>
-        <description>The tracking data indicates a dual-focus in U.S. military posture, with notable activity in both European and Indo-Pacific theaters. In Europe, multiple USAF tanker and transport aircraft (KC-10/46 and C-130 variants) are operating in high-traffic corridors, suggesting sustained logistical or refueling missions likely tied to NATO or allied coordination efforts. These operations reflect a commitment to European reassurance and regional stability, though specific objectives remain unclear without further monitoring. In the Indo-Pacific, USS George Washington’s carrier strike group is actively transiting critical chokepoints like the Malacca Strait, reinforcing U.S. deterrence and freedom of navigation in the region. USS Benfold’s recent engineering casualty and subsequent transit through the South China Sea highlight operational challenges in maintaining forward presence, particularly in contested waters. The broader military posture demonstrates a balanced approach to global commitments, with no immediate indications of escalatory actions but a clear emphasis on operational readiness and allied interoperability. Intelligence gaps persist regarding the full composition of the carrier strike group and the specific objectives of the tanker missions, warranting continued surveillance for shifts in strategic intent. The data suggests a deliberate but measured U.S. military presence, balancing deterrence with diplomatic engagement across key theaters.</description>
+        <description>The tracking data reveals a robust and multi-domain U.S. military posture, with a clear strategic emphasis on the Indo-Pacific region. Carrier strike groups led by the USS George Washington, USS Carl Vinson, and USS Nimitz are actively deployed across critical maritime chokepoints, including the Strait of Malacca and the South China Sea, signaling a sustained commitment to deterrence and freedom of navigation operations. The presence of amphibious ready groups, such as the USS Tripoli, alongside destroyers and cruisers, underscores a layered defense strategy aimed at countering Chinese maritime ambitions and maintaining regional stability. The USS Benfold’s recent operational challenges highlight the vulnerabilities of forward-deployed assets in high-threat environments, reinforcing the need for robust maintenance and rapid response capabilities. In Europe, the deployment of ISR platforms like the RC-135 Rivet Joint over key regions suggests heightened vigilance against Russian hybrid warfare tactics, with possible coordination with NATO allies to enhance situational awareness. The absence of other major U.S. naval vessels in the data may indicate a disaggregated but deliberate deployment strategy, focusing assets where they are most needed to address immediate threats. Overall, the data reflects a military posture prioritizing deterrence, rapid response, and alliance cohesion, with the Indo-Pacific as the primary theater of concern. The concurrent operations in Europe and the Pacific suggest a global force posture designed to address multiple contingencies, but the concentration of assets in the Pacific indicates a strategic pivot toward countering China’s growing influence.</description>
         <Point>
           <coordinates>0,0,0</coordinates>
         </Point>
